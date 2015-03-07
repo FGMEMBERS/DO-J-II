@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+###############################################################################
+##
+##   Dornier DO J II - f - Bos (Wal)
+##   by Marc Kraus :: Lake of Constance Hangar
+##
+##   Copyright (C) 2012 - 2014  Marc Kraus  (info(at)marc-kraus.de)
+##
+###############################################################################
+-->
+<PropertyList>
+
+  <path>tau.ac</path>
+
+	<!-- No preview for fgrun-->
+	<animation>
+    <object-name>tau</object-name>
+		<nopreview/>
+	</animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>tau</object-name>   
+    <condition>
+      <not>
+			  <property>/sim/rendering/rembrandt/enabled</property>
+      </not>
+    </condition>
+    <emission>
+      <red>0.15</red>
+      <green>0.15</green>
+      <blue>0.15</blue>
+      <factor-prop>sim/multiplay/generic/float[3]</factor-prop>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>tau</object-name>
+      <condition>
+        <not>
+          <property>sim/multiplay/generic/float[16]</property>
+        </not>
+      </condition>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>tau</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-assign</command>
+        <property>controls/special/mooring</property>
+        <value>1</value>
+      </binding>
+    </action>
+  </animation>
+
+</PropertyList>

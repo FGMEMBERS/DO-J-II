@@ -1,0 +1,866 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Siemens K4g -->
+<!--
+###############################################################################
+##
+##   Dornier DO J II - f - Bos (Wal)
+##   by Marc Kraus :: Lake of Constance Hangar
+##
+##   Copyright (C) 2012 - 2014  Marc Kraus  (info(at)marc-kraus.de)
+##
+###############################################################################
+-->
+<PropertyList>
+
+ <path>k4.ac</path>
+
+  <animation>
+    <object-name>Black-ball</object-name>
+    <object-name>Chrono-face</object-name>
+    <object-name>Chrono-face.001</object-name>
+    <object-name>Chrono-hour</object-name>
+    <object-name>Chrono-hour.001</object-name>
+    <object-name>Chrono-minutes</object-name>
+    <object-name>Chrono-minutes.001</object-name>
+    <object-name>Chrono-rebord</object-name>
+    <object-name>Chrono-rebord.001</object-name>
+    <object-name>Compass-ball</object-name>
+    <object-name>El-box</object-name>
+    <object-name>El-direction</object-name>
+    <object-name>El-clutch</object-name>
+    <object-name>Hdg-bug-ball</object-name>
+    <object-name>Hdg-face</object-name>
+    <object-name>Hdg-front</object-name>
+    <object-name>Hdg-rebord</object-name>
+    <object-name>Offset-knob</object-name>
+    <object-name>Offset-reset-knob</object-name>
+    <object-name>Turn-ball</object-name>
+    <object-name>TurnFace</object-name>
+    <object-name>support</object-name>
+    <object-name>visses</object-name>
+
+    <object-name>vitre</object-name>
+  </animation>
+
+  <animation>
+    <type>shader</type>
+    <shader>chrome</shader>
+    <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
+    <object-name>vitre</object-name>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>Chrono-face</object-name>
+    <object-name>Chrono-face.001</object-name>
+    <object-name>Chrono-hour</object-name>
+    <object-name>Chrono-hour.001</object-name>
+    <object-name>Chrono-minutes</object-name>
+    <object-name>Chrono-minutes.001</object-name>
+    <object-name>Compass-ball</object-name>
+    <object-name>El-direction</object-name>
+    <object-name>Hdg-bug-ball</object-name>
+    <object-name>Hdg-face</object-name>
+    <object-name>Hdg-front</object-name>
+    <object-name>Offset-knob</object-name>
+    <object-name>Offset-reset-knob</object-name>
+    <object-name>Turn-ball</object-name>
+    <condition>
+      <not>
+			  <property>/sim/rendering/rembrandt/enabled</property>
+      </not>
+    </condition>
+    <emission>
+      <red> 1 </red>
+      <green> 1 </green>
+      <blue> 1 </blue>
+      <factor-prop>sim/multiplay/generic/float[3]</factor-prop>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>material</type>    
+    <object-name>El-box</object-name>
+    <object-name>El-clutch</object-name>
+    <object-name>TurnFace</object-name>
+    <object-name>support</object-name>
+    <condition>
+      <not>
+			  <property>/sim/rendering/rembrandt/enabled</property>
+      </not>
+    </condition>
+      <emission>
+        <red>0.2</red>
+        <green>0.2</green>
+        <blue>0.2</blue>
+        <factor-prop>sim/multiplay/generic/float[3]</factor-prop>
+      </emission>
+  </animation>
+
+  <animation>
+    <type>material</type>
+      <object-name>El-clutch-on</object-name>
+    <emission>
+      <red>1</red>
+      <green>1</green>
+      <blue>1</blue>
+      <factor-prop>/instrumentation/k4/clutch</factor-prop>
+    </emission>
+  </animation>
+
+  <!-- I do not found anything for the moment for this two instruments, but I think it will be the 
+       trim-support for the aileron and rudder trim - so I need a new autopilot :-( -->
+  <animation>
+    <type>rotate</type>
+    <object-name>Chrono-hour</object-name>
+    <property>/instrumentation/k4/hydraulic-press-a</property>
+    <interpolation>      
+      <entry><ind>   1.0 </ind><dep>    300 </dep></entry>
+      <entry><ind>   0.0   </ind><dep>    0 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>  0.0 </x-m>
+      <y-m> -0.04499 </y-m>
+      <z-m>  0.2367 </z-m>
+    </center>
+    <axis>
+      <x>-1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>Chrono-minutes</object-name>
+    <property>/instrumentation/k4/hydraulic-aileron</property>
+    <interpolation>      
+      <entry><ind>   1.0 </ind><dep>    300 </dep></entry>
+      <entry><ind>   0.02 </ind><dep>   270 </dep></entry>
+      <entry><ind>   0.002 </ind><dep>  220 </dep></entry>
+      <entry><ind>   0.0   </ind><dep>    0 </dep></entry>
+      <entry><ind>  -0.002 </ind><dep>  220 </dep></entry>
+      <entry><ind>  -0.02   </ind><dep> 270 </dep></entry>
+      <entry><ind>  -1.0 </ind><dep>    300 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>  0.0 </x-m>
+      <y-m> -0.04499 </y-m>
+      <z-m>  0.2367 </z-m>
+    </center>
+    <axis>
+      <x>-1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>Chrono-hour.001</object-name>
+    <property>/instrumentation/k4/hydraulic-press-e</property>
+    <interpolation> 
+      <entry><ind>   1.0 </ind><dep>    310 </dep></entry>
+      <entry><ind>   0.0   </ind><dep>    0 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>  0.0 </x-m>
+      <y-m>  0.045 </y-m>
+      <z-m>  0.2367 </z-m>
+    </center>
+    <axis>
+      <x>-1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>Chrono-minutes.001</object-name>
+    <property>/instrumentation/k4/hydraulic-elevator</property>
+    <interpolation> 
+      <entry><ind>   1.0 </ind><dep>    310 </dep></entry>
+      <entry><ind>   0.02 </ind><dep>   280 </dep></entry>
+      <entry><ind>   0.002 </ind><dep>  220 </dep></entry>
+      <entry><ind>   0.0   </ind><dep>    0 </dep></entry>
+      <entry><ind>  -0.002 </ind><dep>  220 </dep></entry>
+      <entry><ind>  -0.02   </ind><dep> 280 </dep></entry>
+      <entry><ind>  -1.0 </ind><dep>    310 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m>  0.0 </x-m>
+      <y-m>  0.045 </y-m>
+      <z-m>  0.2367 </z-m>
+    </center>
+    <axis>
+      <x>-1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>El-clutch-on</object-name>
+    <condition>
+       <property>/instrumentation/k4/clutch</property>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>El-clutch</object-name>
+    <condition>
+      <not>
+        <property>/instrumentation/k4/clutch</property>
+      </not>
+    </condition>
+  </animation>
+
+  <!-- change direction (select your heading) --> 
+  <animation>
+    <type>rotate</type>
+    <object-name>El-direction</object-name>
+    <property>/instrumentation/k4/dir-pos-knob</property>
+    <interpolation>
+      <entry><ind>  -1 </ind><dep>  40 </dep></entry>
+      <entry><ind>   0 </ind><dep>   0 </dep></entry>
+      <entry><ind>   1 </ind><dep> -40 </dep></entry>
+    </interpolation>
+    <center> 
+      <x-m> 0 </x-m>
+      <y-m> 0.1353 </y-m>
+      <z-m> 0.2504 </z-m>
+    </center>
+    <axis>
+      <x>  1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>El-direction</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-assign</command>
+        <property>/instrumentation/k4/dir-pos-knob</property>  
+        <value>-1.0</value>
+      </binding>
+      <binding>
+        <command>property-toggle</command>
+        <property>/sim/sound/switch</property>
+      </binding>
+      <binding>
+        <condition>
+            <not>
+                <property>devices/status/keyboard/shift</property>
+            </not>
+        </condition>
+        <command>property-adjust</command>
+        <property>/autopilot/settings/heading-bug-deg</property>
+        <step>-1</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+      <binding>
+        <condition>
+           <property>devices/status/keyboard/shift</property>
+        </condition>
+        <command>property-adjust</command>
+        <property>/autopilot/settings/heading-bug-deg</property>
+        <step>-5</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+      <mod-up>
+        <binding>
+          <command>property-assign</command>
+          <property>/instrumentation/k4/dir-pos-knob</property>  
+          <value>0.0</value>
+        </binding>
+      </mod-up>
+    </action>
+    <action>
+      <button>1</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-assign</command>
+        <property>/instrumentation/k4/dir-pos-knob</property>  
+        <value>1.0</value>
+      </binding>
+      <binding>
+        <command>property-toggle</command>
+        <property>/sim/sound/switch</property>
+      </binding>
+      <binding>
+        <condition>
+            <not>
+                <property>devices/status/keyboard/shift</property>
+            </not>
+        </condition>
+        <command>property-adjust</command>
+        <property>/autopilot/settings/heading-bug-deg</property>
+        <step>1</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+      <binding>
+        <condition>
+           <property>devices/status/keyboard/shift</property>
+        </condition>
+        <command>property-adjust</command>
+        <property>/autopilot/settings/heading-bug-deg</property>
+        <step>5</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+      <mod-up>
+        <binding>
+          <command>property-assign</command>
+          <property>/instrumentation/k4/dir-pos-knob</property>  
+          <value>0.0</value>
+        </binding>
+      </mod-up>
+    </action>
+  </animation>
+
+  <!-- not visible objects for mouse user -->
+  <animation>
+    <type>pick</type>
+    <object-name>TurnLeft</object-name>
+    <visible>false</visible>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-assign</command>
+        <property>/instrumentation/k4/dir-pos-knob</property>  
+        <value>-1.0</value>
+      </binding>
+      <binding>
+        <command>property-toggle</command>
+        <property>/sim/sound/switch</property>
+      </binding>
+      <binding>
+        <condition>
+            <not>
+                <property>devices/status/keyboard/shift</property>
+            </not>
+        </condition>
+        <command>property-adjust</command>
+        <property>/autopilot/settings/heading-bug-deg</property>
+        <step>-1</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+      <binding>
+        <condition>
+            <property>devices/status/keyboard/shift</property>
+        </condition>
+        <command>property-adjust</command>
+        <property>/autopilot/settings/heading-bug-deg</property>
+        <step>-5</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+      <mod-up>
+        <binding>
+          <command>property-assign</command>
+          <property>/instrumentation/k4/dir-pos-knob</property>  
+          <value>0.0</value>
+        </binding>
+      </mod-up>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>TurnRight</object-name>
+    <visible>false</visible>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <binding>
+        <command>property-assign</command>
+        <property>/instrumentation/k4/dir-pos-knob</property>  
+        <value>1.0</value>
+      </binding>
+      <binding>
+        <command>property-toggle</command>
+        <property>/sim/sound/switch</property>
+      </binding>
+      <binding>
+        <condition>
+            <not>
+                <property>devices/status/keyboard/shift</property>
+            </not>
+        </condition>
+        <command>property-adjust</command>
+        <property>/autopilot/settings/heading-bug-deg</property>
+        <step>1</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+      <binding>
+        <condition>
+            <property>devices/status/keyboard/shift</property>
+        </condition>
+        <command>property-adjust</command>
+        <property>/autopilot/settings/heading-bug-deg</property>
+        <step>5</step>
+        <min>0</min>
+        <max>360</max>
+        <wrap>1</wrap>
+      </binding>
+      <mod-up>
+        <binding>
+          <command>property-assign</command>
+          <property>/instrumentation/k4/dir-pos-knob</property>  
+          <value>0.0</value>
+        </binding>
+      </mod-up>
+    </action>
+  </animation>
+
+  <!-- clutch for the autopilot engine / german word is Notausloeseschalter -->
+    <animation>
+    <type>rotate</type>
+    <object-name>El-clutch</object-name>
+    <property>/instrumentation/k4/clutch</property>
+    <interpolation>
+      <entry><ind>   1 </ind><dep> -40 </dep></entry>
+      <entry><ind>   0 </ind><dep>   0 </dep></entry>
+    </interpolation>
+    <center> 
+      <x-m> 0.0143 </x-m>
+      <y-m> 0.1353 </y-m>
+      <z-m> 0.0 </z-m>
+    </center>
+    <axis>
+      <x>  0 </x>
+      <y>  0 </y>
+      <z>  1 </z>
+    </axis>
+  </animation>
+  <animation>
+    <type>pick</type>
+        <object-name>El-clutch</object-name>
+        <object-name>El-clutch-on</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-toggle</command>
+        <property>/instrumentation/k4/clutch</property>
+      </binding>
+      <binding>
+        <command>property-toggle</command>
+        <property>/sim/sound/switch</property>
+      </binding>
+    </action>
+  </animation>
+
+  <!-- indictated-heading / german name in 1934 was Fuehrertochterkompass ;-) -->
+  <animation>
+    <type>rotate</type>
+    <object-name>Hdg-bug-ball</object-name>
+    <property>/instrumentation/heading-indicator/indicated-heading-deg</property>
+    <factor> -1 </factor>
+    <center>
+      <x-m> -0.0474 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m>  0.000 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+
+  <!-- Magnetic Compass -->
+  <animation>
+    <type>rotate</type>
+    <object-name>Compass-ball</object-name>
+    <property>/instrumentation/magnetic-compass/indicated-heading-deg</property>
+    <factor> -1 </factor>
+    <center>
+      <x-m> -0.0474 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m>  0.000 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>Turn-ball</object-name>
+    <property>sim/multiplay/generic/float[10]</property>
+    <min> -1.1 </min>
+    <max>  1.1 </max>
+    <interpolation>
+     <entry><ind> -1.1 </ind><dep> -7.2 </dep></entry>
+     <entry><ind>  1.1 </ind><dep>  7.2 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m> 0.00 </x-m>
+      <y-m> 0.00 </y-m>
+      <z-m> 0.22 </z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <!-- and the direction show / german name was Richtungsanzeiger -->
+
+  <animation>
+    <type>rotate</type>
+    <object-name>Hdg-face</object-name>
+    <property>/instrumentation/heading-indicator/indicated-heading-deg</property>
+    <factor> -1 </factor>
+    <center> 
+      <x-m> 0 </x-m>
+      <y-m> 0 </y-m>
+      <z-m>-0.045 </z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>Hdg-front</object-name>
+    <property>/instrumentation/heading-indicator/indicated-heading-deg</property>
+    <factor> -1 </factor>
+    <center> 
+      <x-m> 0 </x-m>
+      <y-m> 0 </y-m>
+      <z-m>-0.045 </z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>Hdg-front</object-name>
+     <!-- <property>/autopilot/settings/heading-bug-deg</property> -->
+    <property>sim/multiplay/generic/float[17]</property>
+      <center> 
+        <x-m> 0 </x-m>
+        <y-m> 0 </y-m>
+        <z-m>-0.045 </z-m>
+      </center>
+      <axis>
+        <x> -1 </x>
+        <y>  0 </y>
+        <z>  0 </z>
+      </axis>
+  </animation>
+
+  <!-- Heading offset reset knob -->
+	<animation>
+    <type>translate</type>
+    <object-name>Offset-reset-knob</object-name>
+    <property>/instrumentation/k4/offset-knob-reset</property>
+    <factor>-0.006</factor>
+    <center> 
+      <x-m> 0 </x-m>
+      <y-m>-0.03556 </y-m>
+      <z-m> 0.05294 </z-m>
+    </center>
+    <axis>
+      <x>  1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+ 	</animation>
+
+  <animation>
+    <type>pick</type>
+        <object-name>Offset-reset-knob</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-assign</command>
+        <property>/instrumentation/k4/offset-knob-reset</property>  
+        <value>1</value>
+      </binding>
+      <mod-up>
+        <binding>
+          <command>property-assign</command>
+          <property>/instrumentation/heading-indicator/offset-deg</property>  
+          <value>0.0</value>
+        </binding>
+        <binding>
+          <command>property-assign</command>
+          <property>/instrumentation/k4/offset-knob-reset</property>  
+          <value>0</value>
+        </binding>
+      </mod-up>
+    </action>
+  </animation>
+
+  <!-- Heading Offset knob -->
+  <animation>
+    <type>rotate</type>
+    <object-name>Offset-knob</object-name>
+     <property>/instrumentation/heading-indicator/offset-deg</property>
+    <factor> -1 </factor>
+    <center> 
+      <x-m> 0 </x-m>
+      <y-m> 0.03734 </y-m>
+      <z-m> 0.05293 </z-m>
+    </center>
+    <axis>
+      <x>  1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>Offset-knob</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+      <binding>
+          <condition>
+              <not>
+                  <property>devices/status/keyboard/shift</property>
+              </not>
+          </condition>
+          <command>property-adjust</command>
+          <property>/instrumentation/heading-indicator/offset-deg</property>
+          <step>1</step>
+          <min>0</min>
+          <max>360</max>
+          <wrap>1</wrap>
+      </binding>
+      <binding>
+          <condition>
+              <property>devices/status/keyboard/shift</property>
+          </condition>
+          <command>property-adjust</command>
+          <property>/instrumentation/heading-indicator/offset-deg</property>
+          <step>5</step>
+          <min>0</min>
+          <max>360</max>
+          <wrap>1</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+      <binding>
+          <condition>
+              <not>
+                  <property>devices/status/keyboard/shift</property>
+              </not>
+          </condition>
+          <command>property-adjust</command>
+          <property>/instrumentation/heading-indicator/offset-deg</property>
+          <step>-1</step>
+          <min>0</min>
+          <max>360</max>
+          <wrap>1</wrap>
+      </binding>
+      <binding>
+          <condition>
+              <property>devices/status/keyboard/shift</property>
+          </condition>
+          <command>property-adjust</command>
+          <property>/instrumentation/heading-indicator/offset-deg</property>
+          <step>-5</step>
+          <min>0</min>
+          <max>360</max>
+          <wrap>1</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+      <binding>
+          <condition>
+              <not>
+                  <property>devices/status/keyboard/shift</property>
+              </not>
+          </condition>
+          <command>property-adjust</command>
+          <property>/instrumentation/heading-indicator/offset-deg</property>
+          <step>1</step>
+          <min>0</min>
+          <max>360</max>
+          <wrap>1</wrap>
+      </binding>
+      <binding>
+          <condition>
+              <property>devices/status/keyboard/shift</property>
+          </condition>
+          <command>property-adjust</command>
+          <property>/instrumentation/heading-indicator/offset-deg</property>
+          <step>5</step>
+          <min>0</min>
+          <max>360</max>
+          <wrap>1</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+      <binding>
+          <condition>
+              <not>
+                  <property>devices/status/keyboard/shift</property>
+              </not>
+          </condition>
+          <command>property-adjust</command>
+          <property>/instrumentation/heading-indicator/offset-deg</property>
+          <step>-1</step>
+          <min>0</min>
+          <max>360</max>
+          <wrap>1</wrap>
+      </binding>
+      <binding>
+          <condition>
+              <property>devices/status/keyboard/shift</property>
+          </condition>
+          <command>property-adjust</command>
+          <property>/instrumentation/heading-indicator/offset-deg</property>
+          <step>-5</step>
+          <min>0</min>
+          <max>360</max>
+          <wrap>1</wrap>
+      </binding>
+    </action>
+  </animation>
+
+<!-- Labels activated by hotspots -->
+  <animation>
+    <type>material</type>
+    <object-name>LabelHI</object-name>
+    <object-name>LabelTurn</object-name>
+    <object-name>LabelCompass</object-name>
+    <emission>
+        <red>1.0</red>
+        <green>0.8</green>
+        <blue>0.0</blue>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>LabelHI</object-name>
+    <object-name>LabelTurn</object-name>
+    <object-name>LabelCompass</object-name>
+    <condition>
+        <property>/sim/panel-hotspots</property>
+    </condition>
+  </animation>
+
+  <text>
+    <name>LabelHI</name>
+    <type type="string">literal</type>
+    <text type="string">Heading Indicator</text>
+    <draw-text type="bool">true</draw-text>
+    <font>Helvetica.txf</font>
+    <character-size type="double">0.012</character-size>
+    <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+    <axis-alignment>yz-plane</axis-alignment>
+    <max-height>0.2</max-height>
+    <max-width>0.1</max-width>
+    <font-resolution>
+        <width type="int">32</width>
+        <height type="int">32</height>
+    </font-resolution>
+    <alignment>center-center</alignment>
+    <offsets>
+      <x-m>  0.01 </x-m> <!-- near to panel -->
+      <y-m>  0 </y-m> <!-- right -->
+      <z-m>  0.082 </z-m> <!-- up -->
+    </offsets>
+  </text>
+
+  <text>
+    <name>LabelTurn</name>
+    <type type="string">literal</type>
+    <text type="string">Turn &amp; Bank</text>
+    <draw-text type="bool">true</draw-text>
+    <font>Helvetica.txf</font>
+    <character-size type="double">0.012</character-size>
+    <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+    <axis-alignment>yz-plane</axis-alignment>
+    <max-height>0.2</max-height>
+    <max-width>0.1</max-width>
+    <font-resolution>
+        <width type="int">32</width>
+        <height type="int">32</height>
+    </font-resolution>
+    <alignment>center-center</alignment>
+    <offsets>
+      <x-m>  0.01 </x-m> <!-- near to panel -->
+      <y-m>  0 </y-m> <!-- right -->
+      <z-m>  0.065 </z-m> <!-- up -->
+    </offsets>
+  </text>
+
+  <text>
+    <name>LabelCompass</name>
+    <type type="string">literal</type>
+    <text type="string">Magnetic Compass</text>
+    <draw-text type="bool">true</draw-text>
+    <font>Helvetica.txf</font>
+    <character-size type="double">0.012</character-size>
+    <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+    <axis-alignment>yz-plane</axis-alignment>
+    <max-height>0.2</max-height>
+    <max-width>0.1</max-width>
+    <font-resolution>
+      <width type="int">32</width>
+      <height type="int">32</height>
+    </font-resolution>
+    <alignment>center-center</alignment>
+    <offsets>
+      <x-m>  0.010 </x-m> <!-- near to panel -->
+      <y-m>  0.000 </y-m> <!-- right -->
+      <z-m>  0.065 </z-m> <!-- up -->
+    </offsets>
+  </text>
+
+
+</PropertyList>
+

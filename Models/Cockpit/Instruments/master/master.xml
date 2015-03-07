@@ -1,0 +1,1036 @@
+<?xml version="1.0"?>
+<PropertyList>
+<!-- Siemens K4g -->
+<!--
+###############################################################################
+##
+##   Dornier DO J II - f - Bos (Wal)
+##   by Marc Kraus :: Lake of Constance Hangar
+##
+##   Copyright (C) 2012 - 2014  Marc Kraus  (info(at)marc-kraus.de)
+##
+###############################################################################
+-->
+<path>master.ac</path>
+
+  <animation>
+      <type>material</type>
+      <object-name>face</object-name>
+      <object-name>bezel</object-name>
+      <object-name>dimmer</object-name>
+      <object-name>magnetoKnob</object-name>
+      <object-name>magnetoKnob.001</object-name>
+      <object-name>masterBase</object-name>
+      <object-name>masterCover</object-name>
+      <object-name>masterSwitch</object-name>
+      <object-name>masterBase.001</object-name>
+      <object-name>masterCover.001</object-name>
+      <object-name>masterSwitch.001</object-name>
+      <object-name>sockle</object-name>
+      <object-name>sockle.001</object-name>
+      <object-name>sockle.002</object-name>
+      <object-name>sockle.003</object-name>
+      <object-name>sockle.004</object-name>
+      <object-name>sockle.005</object-name>
+      <object-name>sockle.005</object-name>
+      <object-name>sockle.006</object-name>
+      <object-name>sockle.007</object-name>
+      <object-name>bracket</object-name>
+      <object-name>bracket.001</object-name>
+      <object-name>screws</object-name>
+      <object-name>switch</object-name>
+      <object-name>switch.001</object-name>
+      <object-name>switch.002</object-name>
+      <object-name>switch.003</object-name>
+      <object-name>switch.004</object-name>
+      <object-name>switch.005</object-name>
+      <object-name>switch.005</object-name>
+      <object-name>switch.006</object-name>
+      <object-name>switch.007</object-name>
+      <condition>
+        <greater-than>
+          <property>sim/multiplay/generic/float[3]</property>
+          <value>0</value>
+        </greater-than>
+        <not>
+			    <property>/sim/rendering/rembrandt/enabled</property>
+        </not>
+      </condition>
+      <emission>
+        <red>0.6</red>
+        <green>0.6</green>
+        <blue>0.6</blue>
+        <factor-prop>sim/multiplay/generic/float[3]</factor-prop>
+      </emission>
+  </animation>
+
+  <animation>
+      <type>material</type>
+      <object-name>face</object-name>
+      <object-name>bezel</object-name>
+      <object-name>dimmer</object-name>
+      <object-name>magnetoKnob</object-name>
+      <object-name>magnetoKnob.001</object-name>
+      <object-name>masterBase</object-name>
+      <object-name>masterCover</object-name>
+      <object-name>masterSwitch</object-name>
+      <object-name>masterBase.001</object-name>
+      <object-name>masterCover.001</object-name>
+      <object-name>masterSwitch.001</object-name>
+      <object-name>sockle</object-name>
+      <object-name>sockle.001</object-name>
+      <object-name>sockle.002</object-name>
+      <object-name>sockle.003</object-name>
+      <object-name>sockle.004</object-name>
+      <object-name>sockle.005</object-name>
+      <object-name>sockle.005</object-name>
+      <object-name>sockle.006</object-name>
+      <object-name>sockle.007</object-name>
+      <object-name>bracket</object-name>
+      <object-name>bracket.001</object-name>
+      <object-name>screws</object-name>
+      <object-name>switch</object-name>
+      <object-name>switch.001</object-name>
+      <object-name>switch.002</object-name>
+      <object-name>switch.003</object-name>
+      <object-name>switch.004</object-name>
+      <object-name>switch.005</object-name>
+      <object-name>switch.005</object-name>
+      <object-name>switch.006</object-name>
+      <object-name>switch.007</object-name>
+      <condition>
+        <less-than>
+          <property>sim/multiplay/generic/float[3]</property>
+          <value>1</value>
+        </less-than>
+        <not>
+			    <property>/sim/rendering/rembrandt/enabled</property>
+        </not>
+      </condition>
+      <emission>
+        <red>0.01</red>
+        <green>0.01</green>
+        <blue>0.01</blue>
+        <factor-prop>sim/multiplay/generic/float[3]</factor-prop>
+      </emission>
+  </animation>
+
+  <animation>
+    <type>material</type>
+      <object-name>nightHelp</object-name>
+      <emission>
+        <red>0.5</red>
+        <green>0.7</green>
+        <blue>0.2</blue>
+      </emission>
+  </animation>
+
+  <animation>
+      <type>select</type>
+      <object-name>nightHelp</object-name>
+      <condition>
+        <less-than>
+          <property>sim/multiplay/generic/float[3]</property>
+          <value>0.5</value>
+        </less-than>
+      </condition>
+  </animation>
+
+  <animation>
+    <type>material</type>
+      <object-name>lampOn</object-name>
+    <emission>
+      <red>1</red>
+      <green>1</green>
+      <blue>0</blue>
+      <factor-prop>/systems/electrical/volts</factor-prop>
+    </emission>
+  </animation>
+
+    <!-- Main Control -->
+    <animation>
+        <type>select</type>
+        <object-name>lampOff</object-name>
+        <condition>
+          <or>
+            <less-than>
+              <property>/systems/electrical/volts</property>
+              <value>6</value>
+            </less-than>
+            <not>
+              <property>/controls/electric/battery-switch</property>
+            </not>
+          </or>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>lampOn</object-name>
+        <condition>
+          <and>
+            <greater-than>
+              <property>/systems/electrical/volts</property>
+              <value>6</value>
+            </greater-than>            
+            <property>/controls/electric/battery-switch</property>
+          </and>
+        </condition>
+    </animation>
+
+
+<!--  MAGNETO - KNOB -->
+   <animation>
+        <type>rotate</type>
+        <object-name>magnetoKnob.001</object-name>
+        <property>/controls/engines/engine/magnetos</property>
+        <interpolation>
+          <entry><ind>0</ind><dep>-88</dep></entry>
+          <entry><ind>1</ind><dep>-43</dep></entry>
+          <entry><ind>2</ind><dep> 0</dep></entry>
+          <entry><ind>3</ind><dep> 43</dep></entry>
+        </interpolation>
+        <axis>
+            <x>1.0</x>
+            <y>0.0</y>
+            <z>0.0</z>
+        </axis>
+        <center>
+            <x-m> 0.0</x-m>
+            <y-m>-0.0075</y-m>
+            <z-m> 0.0098</z-m>
+        </center>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>magnetoKnob.001</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>true</repeatable>
+            <interval-sec>0.2</interval-sec>
+            <binding>
+              <command>property-adjust</command>
+              <property>/controls/engines/engine/magnetos</property>
+              <step>1</step>
+              <min>0</min>
+              <max>3</max>
+              <wrap>0</wrap>
+            </binding>
+            <binding>
+              <command>property-toggle</command>
+              <property>/sim/sound/switch</property>
+            </binding>
+        </action>
+
+        <action>
+            <button>1</button>
+            <interval-sec>0.2</interval-sec>
+            <binding>
+              <command>property-adjust</command>
+              <property>/controls/engines/engine/magnetos</property>
+              <step>-1</step>
+              <min>0</min>
+              <max>3</max>
+              <wrap>0</wrap>
+            </binding>
+            <binding>
+              <command>property-toggle</command>
+              <property>/sim/sound/switch</property>
+            </binding>
+        </action>
+    </animation>
+
+<!--  MAGNETO - KNOB -->
+   <animation>
+        <type>rotate</type>
+        <object-name>magnetoKnob</object-name>
+        <property>/controls/engines/engine[1]/magnetos</property>
+        <interpolation>
+          <entry><ind>0</ind><dep>-88</dep></entry>
+          <entry><ind>1</ind><dep>-43</dep></entry>
+          <entry><ind>2</ind><dep> 0</dep></entry>
+          <entry><ind>3</ind><dep> 43</dep></entry>
+        </interpolation>
+        <axis>
+            <x>1.0</x>
+            <y>0.0</y>
+            <z>0.0</z>
+        </axis>
+        <center>
+            <x-m> 0.0</x-m>
+            <y-m>-0.0074</y-m>
+            <z-m>-0.04</z-m>
+        </center>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>magnetoKnob</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>true</repeatable>
+            <interval-sec>0.2</interval-sec>
+            <binding>
+              <command>property-adjust</command>
+              <property>/controls/engines/engine[1]/magnetos</property>
+              <step>1</step>
+              <min>0</min>
+              <max>3</max>
+              <wrap>0</wrap>
+            </binding>
+            <binding>
+              <command>property-toggle</command>
+              <property>/sim/sound/switch</property>
+            </binding>
+        </action>
+
+        <action>
+            <button>1</button>
+            <interval-sec>0.2</interval-sec>
+            <binding>
+              <command>property-adjust</command>
+              <property>/controls/engines/engine[1]/magnetos</property>
+              <step>-1</step>
+              <min>0</min>
+              <max>3</max>
+              <wrap>0</wrap>
+            </binding>
+            <binding>
+              <command>property-toggle</command>
+              <property>/sim/sound/switch</property>
+            </binding>
+        </action>
+    </animation>
+
+  <!-- Clutch 1 -->
+  <animation>
+    <type>rotate</type>
+    <object-name>masterCover</object-name>
+    <property>/controls/switches/clutch1-cover</property>
+    <interpolation> 
+            <entry>
+                <ind>0</ind>
+                <dep>0</dep>
+            </entry>
+            <entry>
+                <ind>1</ind>
+                <dep>-90.0</dep>
+            </entry>		
+        </interpolation>
+    <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+    </axis>
+    <center>
+    <x-m> 0.0014</x-m>
+    <y-m>-0.0533</y-m>
+    <z-m> 0.0432</z-m>
+    </center>  
+  </animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>masterCover</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+          <command>property-toggle</command>
+          <property>/controls/switches/clutch1-cover</property>
+      </binding>
+      <binding>
+        <command>property-toggle</command>
+        <property>/sim/sound/switch</property>
+      </binding>
+    </action>
+</animation>
+
+<animation>
+    <type>rotate</type>
+    <object-name>masterSwitch</object-name>
+    <property>/engines/engine[0]/clutch</property>
+    <interpolation> 
+            <entry>
+                <ind>0</ind>
+                <dep>35</dep>
+            </entry>
+            <entry>
+                <ind>1</ind>
+                <dep>-10</dep>
+            </entry>		
+        </interpolation>
+    <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+    </axis>
+    <center>
+    <x-m>0.0036</x-m>
+    <y-m>0.0</y-m>
+    <z-m>0.0367</z-m>
+    </center>  
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>masterSwitch</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+          <command>property-toggle</command>
+          <property>/engines/engine[0]/clutch</property>
+      </binding>
+      <binding>
+        <command>property-toggle</command>
+        <property>/sim/sound/switch</property>
+      </binding>
+    </action>
+</animation>
+
+  <!-- Clutch 2 -->
+  <animation>
+    <type>rotate</type>
+    <object-name>masterCover.001</object-name>
+    <property>/controls/switches/clutch2-cover</property>
+    <interpolation> 
+            <entry>
+                <ind>0</ind>
+                <dep>0</dep>
+            </entry>
+            <entry>
+                <ind>1</ind>
+                <dep>-90.0</dep>
+            </entry>		
+        </interpolation>
+    <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+    </axis>
+    <center>
+    <x-m> 0.0014</x-m>
+    <y-m>-0.0533</y-m>
+    <z-m> 0.0432</z-m>
+    </center>  
+  </animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>masterCover.001</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+          <command>property-toggle</command>
+          <property>/controls/switches/clutch2-cover</property>
+      </binding>
+      <binding>
+        <command>property-toggle</command>
+        <property>/sim/sound/switch</property>
+      </binding>
+    </action>
+</animation>
+
+<animation>
+    <type>rotate</type>
+    <object-name>masterSwitch.001</object-name>
+    <property>/engines/engine[1]/clutch</property>
+    <interpolation> 
+            <entry>
+                <ind>0</ind>
+                <dep>35</dep>
+            </entry>
+            <entry>
+                <ind>1</ind>
+                <dep>-10</dep>
+            </entry>		
+        </interpolation>
+    <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+    </axis>
+    <center>
+      <x-m>0.0036</x-m>
+      <y-m>0.0</y-m>
+      <z-m>0.0367</z-m>
+    </center>  
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>masterSwitch.001</object-name>	
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+          <command>property-toggle</command>
+          <property>/engines/engine[1]/clutch</property>
+      </binding>
+      <binding>
+        <command>property-toggle</command>
+        <property>/sim/sound/switch</property>
+      </binding>
+    </action>
+</animation>
+
+<!-- Starter front engine -->
+<animation>
+    <type>rotate</type>
+    <object-name>switch.007</object-name>
+    <property>/controls/switches/start-one</property>
+    <interpolation> 
+            <entry>
+                <ind>0</ind>
+                <dep>35</dep>
+            </entry>
+            <entry>
+                <ind>1</ind>
+                <dep>-10</dep>
+            </entry>		
+        </interpolation>
+    <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+    </axis>
+    <center>
+    <x-m>0.0062</x-m>
+    <y-m>0.0</y-m>
+    <z-m>0.0208</z-m>
+    </center>  
+</animation>
+
+<animation>
+  <type>pick</type>
+  <object-name>switch.007</object-name>
+  <object-name>sockle.007</object-name>	
+  <visible>true</visible>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-toggle</command>
+      <property>/sim/sound/switch</property>
+    </binding>
+    <binding>
+      <command>property-toggle</command>
+      <property>/controls/switches/start-one</property>
+    </binding>
+  </action>
+</animation>
+
+<!-- Starter back engine -->
+<animation>
+    <type>rotate</type>
+    <object-name>switch.006</object-name>
+    <property>/controls/switches/start-two</property>
+    <interpolation> 
+            <entry>
+                <ind>0</ind>
+                <dep>35</dep>
+            </entry>
+            <entry>
+                <ind>1</ind>
+                <dep>-10</dep>
+            </entry>		
+        </interpolation>
+    <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+    </axis>
+    <center>
+    <x-m>0.0062</x-m>
+    <y-m>0.0</y-m>
+    <z-m>-0.0328</z-m>
+    </center>  
+</animation>
+
+<animation>
+  <type>pick</type>
+  <object-name>switch.006</object-name>
+  <object-name>sockle.006</object-name>		
+  <visible>true</visible>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-toggle</command>
+      <property>/sim/sound/switch</property>
+    </binding>
+    <binding>
+      <command>property-toggle</command>
+      <property>/controls/switches/start-two</property>
+    </binding>
+  </action>
+</animation>
+
+<!-- Nav-Lights -->
+<animation>
+    <type>rotate</type>
+    <object-name>switch</object-name>
+    <!-- <property>/controls/lighting/nav-lights</property> -->
+    <property>sim/multiplay/generic/int[9]</property>
+    <interpolation> 
+            <entry>
+                <ind>0</ind>
+                <dep>35</dep>
+            </entry>
+            <entry>
+                <ind>1</ind>
+                <dep>-10</dep>
+            </entry>		
+        </interpolation>
+    <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+    </axis>
+    <center>
+    <x-m>0.0063</x-m>
+    <y-m>0.0</y-m>
+    <z-m>-0.0796</z-m>
+    </center>  
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>switch</object-name>
+    <object-name>sockle</object-name>		
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/lighting/nav-lights</property>
+        </binding>		
+        <binding>
+          <command>property-toggle</command>
+          <property>/sim/sound/switch</property>
+        </binding>		
+    </action>
+</animation>
+
+<!-- Cabin Light -->
+<animation>
+    <type>rotate</type>
+    <object-name>switch.001</object-name>
+    <!-- <property>/controls/lighting/instruments-norm</property> -->
+    <property>sim/multiplay/generic/float[3]</property>
+    <interpolation> 
+            <entry>
+                <ind>0</ind>
+                <dep>35</dep>
+            </entry>
+            <entry>
+                <ind>0.001</ind>
+                <dep>-10</dep>
+            </entry>
+            <entry>
+                <ind>100</ind>
+                <dep>-10</dep>
+            </entry>		
+        </interpolation>
+    <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+    </axis>
+    <center>
+    <x-m>0.0063</x-m>
+    <y-m>0.0</y-m>
+    <z-m>-0.0796</z-m>
+    </center>  
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>switch.001</object-name>
+    <object-name>sockle.001</object-name>		
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+            <command>nasal</command>
+            <script>
+                if (getprop("/controls/lighting/instruments-norm")== 0.0){
+                setprop("/controls/lighting/instruments-norm", 0.5);}else{setprop("/controls/lighting/instruments-norm", 0.0);}
+		        </script>
+        </binding>	
+        <binding>
+          <command>property-toggle</command>
+          <property>/sim/sound/switch</property>
+        </binding>		
+    </action>
+</animation>
+
+<!-- Landing Light -->
+<animation>
+    <type>rotate</type>
+    <object-name>switch.002</object-name>
+    <!-- <property>/controls/lighting/landing-lights</property> -->
+    <property>sim/multiplay/generic/int[10]</property>
+    <interpolation> 
+            <entry>
+                <ind>0</ind>
+                <dep>35</dep>
+            </entry>
+            <entry>
+                <ind>1</ind>
+                <dep>-10</dep>
+            </entry>		
+        </interpolation>
+    <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+    </axis>
+    <center>
+    <x-m>0.0063</x-m>
+    <y-m>0.0</y-m>
+    <z-m>-0.1099</z-m>
+    </center>  
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>switch.002</object-name>
+    <object-name>sockle.002</object-name>		
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/lighting/landing-lights</property>
+        </binding>		
+        <binding>
+          <command>property-toggle</command>
+          <property>/sim/sound/switch</property>
+        </binding>		
+    </action>
+</animation>
+
+
+<!-- Batterie -->
+<animation>
+    <type>rotate</type>
+    <object-name>switch.003</object-name>
+    <property>/controls/electric/battery-switch</property>
+    <interpolation> 
+            <entry>
+                <ind>0</ind>
+                <dep>35</dep>
+            </entry>
+            <entry>
+                <ind>1</ind>
+                <dep>-10</dep>
+            </entry>		
+        </interpolation>
+    <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+    </axis>
+    <center>
+    <x-m>0.0063</x-m>
+    <y-m>0.0</y-m>
+    <z-m>-0.1097</z-m>
+    </center>  
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>switch.003</object-name>
+    <object-name>sockle.003</object-name>		
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/electric/battery-switch</property>
+        </binding>		
+        <binding>
+          <command>property-toggle</command>
+          <property>/sim/sound/switch</property>
+        </binding>		
+    </action>
+</animation>
+
+<!-- Beacon -->
+<animation>
+    <type>rotate</type>
+    <object-name>switch.004</object-name>
+    <property>/controls/lighting/beacon</property>
+    <interpolation> 
+            <entry>
+                <ind>0</ind>
+                <dep>35</dep>
+            </entry>
+            <entry>
+                <ind>1</ind>
+                <dep>-10</dep>
+            </entry>		
+        </interpolation>
+    <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+    </axis>
+    <center>
+    <x-m>0.0063</x-m>
+    <y-m>0.0</y-m>
+    <z-m>-0.1097</z-m>
+    </center>  
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>switch.004</object-name>
+    <object-name>sockle.004</object-name>		
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/lighting/beacon</property>
+        </binding>		
+        <binding>
+          <command>property-toggle</command>
+          <property>/sim/sound/switch</property>
+        </binding>		
+    </action>
+</animation>
+
+<!-- Strobe -->
+<animation>
+    <type>rotate</type>
+    <object-name>switch.005</object-name>
+    <property>/controls/lighting/strobe</property>
+    <interpolation> 
+            <entry>
+                <ind>0</ind>
+                <dep>35</dep>
+            </entry>
+            <entry>
+                <ind>1</ind>
+                <dep>-10</dep>
+            </entry>		
+        </interpolation>
+    <axis>
+     <x>0</x>
+     <y>1</y>
+     <z>0</z>
+    </axis>
+    <center>
+    <x-m>0.0063</x-m>
+    <y-m>0.0</y-m>
+    <z-m>-0.1097</z-m>
+    </center>  
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>switch.005</object-name>
+    <object-name>sockle.005</object-name>		
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/lighting/strobe</property>
+        </binding>		
+        <binding>
+          <command>property-toggle</command>
+          <property>/sim/sound/switch</property>
+        </binding>		
+    </action>
+</animation>
+
+<!-- Dimmer -->
+<animation>
+    <type>rotate</type>
+    <object-name>dimmer</object-name>
+    <!-- <property>/controls/lighting/instruments-norm</property> -->
+    <property>sim/multiplay/generic/float[3]</property>
+    <interpolation>
+      <entry><ind>0</ind><dep>15</dep></entry>
+      <entry><ind>1</ind><dep>345</dep></entry>
+    </interpolation>
+    <axis>
+        <x>-1.0</x>
+        <y>0.0</y>
+        <z>0.0</z>
+    </axis>
+    <center>
+        <x-m> 0.0</x-m>
+        <y-m> 0.0539</y-m>
+        <z-m>-0.0505</z-m>
+    </center>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>dimmer</object-name>
+    <visible>true</visible>
+    <action>
+        <button>0</button>
+        <repeatable>true</repeatable>
+        <interval-sec>0.2</interval-sec>
+        <binding>
+            <condition>
+              <greater-than>
+                <property>/controls/lighting/instruments-norm</property>
+                <value>0.009</value>
+              </greater-than>
+            </condition>
+            <command>property-adjust</command>
+            <property>/controls/lighting/instruments-norm</property>
+            <step>0.1</step>
+            <min>0.01</min>
+            <max>1</max>
+        </binding>
+        <binding>
+          <condition>
+            <greater-than>
+              <property>/controls/lighting/instruments-norm</property>
+              <value>0.009</value>
+            </greater-than>
+          </condition>
+          <command>property-toggle</command>
+          <property>/sim/sound/switch</property>
+        </binding>
+    </action>
+
+    <action>
+        <button>1</button>
+        <repeatable>true</repeatable>
+        <interval-sec>0.2</interval-sec>
+        <binding>
+            <condition>
+              <greater-than>
+                <property>/controls/lighting/instruments-norm</property>
+                <value>0.009</value>
+              </greater-than>
+            </condition>
+            <command>property-adjust</command>
+            <property>/controls/lighting/instruments-norm</property>
+            <step>-0.1</step>
+            <min>0.01</min>
+            <max>1</max>
+        </binding>
+        <binding>
+          <condition>
+            <greater-than>
+              <property>/controls/lighting/instruments-norm</property>
+              <value>0.009</value>
+            </greater-than>
+          </condition>
+          <command>property-toggle</command>
+          <property>/sim/sound/switch</property>
+        </binding>
+    </action>
+
+    <action>
+        <button>3</button>
+            <binding>
+                <condition>
+                  <greater-than>
+                    <property>/controls/lighting/instruments-norm</property>
+                    <value>0.009</value>
+                  </greater-than>
+                </condition>
+                <condition>
+                    <not>
+                        <property>devices/status/keyboard/shift</property>
+                    </not>
+                </condition>
+                <command>property-adjust</command>
+                <property>/controls/lighting/instruments-norm</property>
+                <step>0.01</step>
+                <min>0.01</min>
+                <max>1</max>
+            </binding>
+            <binding>
+                <condition>
+                  <greater-than>
+                    <property>/controls/lighting/instruments-norm</property>
+                    <value>0.009</value>
+                  </greater-than>
+                </condition>
+                <condition>
+                    <property>devices/status/keyboard/shift</property>
+                </condition>
+                <command>property-adjust</command>
+                <property>/controls/lighting/instruments-norm</property>
+                <step>0.1</step>
+                <min>0.01</min>
+                <max>1</max>
+            </binding>
+        <binding>
+          <condition>
+            <greater-than>
+              <property>/controls/lighting/instruments-norm</property>
+              <value>0.009</value>
+            </greater-than>
+          </condition>
+          <command>property-toggle</command>
+          <property>/sim/sound/switch</property>
+        </binding>
+    </action>
+
+    <action>
+        <button>4</button>
+            <binding>
+                <condition>
+                  <greater-than>
+                    <property>/controls/lighting/instruments-norm</property>
+                    <value>0.009</value>
+                  </greater-than>
+                </condition>
+                <condition>
+                    <not>
+                        <property>devices/status/keyboard/shift</property>
+                    </not>
+                </condition>
+                <command>property-adjust</command>
+                <property>/controls/lighting/instruments-norm</property>
+                <step>-0.01</step>
+                <min>0.01</min>
+                <max>1</max>
+            </binding>
+            <binding>
+                <condition>
+                  <greater-than>
+                    <property>/controls/lighting/instruments-norm</property>
+                    <value>0.09</value>
+                  </greater-than>
+                </condition>
+                <condition>
+                    <property>devices/status/keyboard/shift</property>
+                </condition>
+                <command>property-adjust</command>
+                <property>/controls/lighting/instruments-norm</property>
+                <step>-0.1</step>
+                <min>0.01</min>
+                <max>1</max>
+            </binding>
+        <binding>
+          <condition>
+            <greater-than>
+              <property>/controls/lighting/instruments-norm</property>
+              <value>0.009</value>
+            </greater-than>
+          </condition>
+          <command>property-toggle</command>
+          <property>/sim/sound/switch</property>
+        </binding>
+    </action>
+</animation>
+
+</PropertyList>
