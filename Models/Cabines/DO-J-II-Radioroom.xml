@@ -1,0 +1,346 @@
+<PropertyList>
+<!--
+###############################################################################
+##
+##   Dornier DO J II - f - Bos (Wal)
+##   by Marc Kraus :: Lake of Constance Hangar
+##
+##   Copyright (C) 2012 - 2014  Marc Kraus  (info(at)marc-kraus.de)
+##
+###############################################################################
+-->
+	<path>doj-radioroom.ac</path>
+
+  <animation>
+      <type>material</type>
+      <object-name>radioRoom</object-name>
+      <object-name>CWheel</object-name>
+      <object-name>CockpitDoor</object-name>
+      <object-name>FWheel</object-name>
+      <object-name>FreightDoor</object-name>
+      <object-name>chair</object-name>
+      <object-name>desk</object-name>
+      <object-name>radioSupport</object-name>
+      <object-name>radioWheel</object-name>
+      <condition>
+        <not>
+            <property>sim/rendering/rembrandt/enabled</property>
+        </not>
+      </condition>
+      <emission>
+        <red>0.2</red>
+        <green>0.2</green>
+        <blue>0.2</blue>
+        <factor-prop>sim/multiplay/generic/float[3]</factor-prop>
+      </emission>
+  </animation>
+
+  <animation>
+      <type>material</type>
+      <object-name>scala</object-name>
+      <object-name>supportNeedle</object-name>
+      <condition>
+        <not>
+            <property>sim/rendering/rembrandt/enabled</property>
+        </not>
+      </condition>
+      <emission>
+        <red>0.6</red>
+        <green>0.6</green>
+        <blue>0.6</blue>
+      <factor-prop>sim/multiplay/generic/float[3]</factor-prop>
+      </emission>
+  </animation>
+
+  <!-- the radio direction finder -->
+  <animation>
+    <type>rotate</type>
+    <object-name>radioDirection</object-name>
+    <object-name>radioWheel</object-name>
+    <object-name>scala</object-name>
+    <property>/instrumentation/rdf/rotation-deg</property>
+    <interpolation>
+      <entry><ind>0</ind><dep> 0</dep></entry>
+      <entry><ind>1</ind><dep>360</dep></entry>
+    </interpolation>
+    <center>
+      <x-m>-2.3446 </x-m>
+      <y-m> 0.6767 </y-m>
+      <z-m> 0.0 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z>-1 </z>
+    </axis>
+  </animation>
+
+  <!-- scroll the radioWheel -->
+  <animation>
+    <type>pick</type>
+    <object-name>radioWheel</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+      <binding>
+        <condition>
+            <not>
+                <property>/devices/status/keyboard/shift</property>
+            </not>
+        </condition>
+        <command>property-adjust</command>
+        <property>/instrumentation/rdf/rotation-deg</property>
+        <step>0.002777778</step>
+        <min>0</min>
+        <max>1</max>
+        <wrap>1</wrap>
+      </binding>
+      <binding>
+        <condition>
+            <property>/devices/status/keyboard/shift</property>
+        </condition>
+        <command>property-adjust</command>
+        <property>/instrumentation/rdf/rotation-deg</property>
+        <step>0.02777778</step>
+        <min>0</min>
+        <max>1</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>1</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+      <binding>
+        <condition>
+            <not>
+                <property>/devices/status/keyboard/shift</property>
+            </not>
+        </condition>
+        <command>property-adjust</command>
+        <property>/instrumentation/rdf/rotation-deg</property>
+        <step>-0.002777778</step>
+        <min>0</min>
+        <max>1</max>
+        <wrap>1</wrap>
+      </binding>
+      <binding>
+        <condition>
+            <property>/devices/status/keyboard/shift</property>
+        </condition>
+        <command>property-adjust</command>
+        <property>/instrumentation/rdf/rotation-deg</property>
+        <step>-0.02777778</step>
+        <min>0</min>
+        <max>1</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+      <binding>
+        <condition>
+            <not>
+                <property>/devices/status/keyboard/shift</property>
+            </not>
+        </condition>
+        <command>property-adjust</command>
+        <property>/instrumentation/rdf/rotation-deg</property>
+        <step>0.002777778</step>
+        <min>0</min>
+        <max>1</max>
+        <wrap>1</wrap>
+      </binding>
+      <binding>
+        <condition>
+            <property>/devices/status/keyboard/shift</property>
+        </condition>
+        <command>property-adjust</command>
+        <property>/instrumentation/rdf/rotation-deg</property>
+        <step>0.02777778</step>
+        <min>0</min>
+        <max>1</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+    <action>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+      <binding>
+        <condition>
+            <not>
+                <property>/devices/status/keyboard/shift</property>
+            </not>
+        </condition>
+        <command>property-adjust</command>
+        <property>/instrumentation/rdf/rotation-deg</property>
+        <step>-0.002777778</step>
+        <min>0</min>
+        <max>1</max>
+        <wrap>1</wrap>
+      </binding>
+      <binding>
+        <condition>
+            <property>/devices/status/keyboard/shift</property>
+        </condition>
+        <command>property-adjust</command>
+        <property>/instrumentation/rdf/rotation-deg</property>
+        <step>-0.02777778</step>
+        <min>0</min>
+        <max>1</max>
+        <wrap>1</wrap>
+      </binding>
+    </action>
+  </animation>
+
+  <!-- RadioDirectionFinder in the Radio Cabin  -->
+  <model>
+    <path>Aircraft/DO-J-II/Models/Cabines/Instruments/rdf/rdf.xml</path>
+    <offsets>
+      <x-m> -2.25 </x-m> <!-- back -->
+      <y-m>  0.983 </y-m> <!-- right -->
+      <z-m>  0.9 </z-m> <!-- up -->
+      <heading-deg> -90 </heading-deg>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/DO-J-II/Models/Cabines/Instruments/pencil.xml</path>
+    <offsets>
+      <x-m> -2.208 </x-m>
+      <y-m>  0.80 </y-m>
+      <z-m>  0.55 </z-m> <!-- up -->
+      <heading-deg> -45 </heading-deg>
+    </offsets>
+  </model>
+
+  <!-- Headset on the table in the Radio Cabin  -->
+  <model>
+    <path>Aircraft/DO-J-II/Models/Cabines/Instruments/headset/headset.xml</path>
+    <offsets>
+      <x-m> -2.208 </x-m>
+      <y-m>  0.843 </y-m>
+      <z-m>  0.490 </z-m> <!-- up -->
+    </offsets>
+  </model>
+
+
+  <!-- Cockpit door -->
+  <animation>
+    <type>rotate</type>
+    <object-name>CockpitDoor</object-name>
+    <object-name>CWheel</object-name>
+    <property>sim/multiplay/generic/float[7]</property>
+    <interpolation>
+      <entry><ind>   0 </ind><dep>   0 </dep></entry>
+      <entry><ind> 0.5 </ind><dep>   0 </dep></entry>
+      <entry><ind>   1 </ind><dep>-110 </dep></entry>
+    </interpolation>
+    <center>
+        <x-m>-2.7110</x-m>
+        <y-m>-0.2622</y-m>
+        <z-m>0.0</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>0</y>
+      <z>1</z>
+    </axis>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>CWheel</object-name>
+    <property>sim/multiplay/generic/float[7]</property>
+    <interpolation>
+      <entry><ind>   0 </ind><dep>   0 </dep></entry>
+      <entry><ind> 0.5 </ind><dep> 180 </dep></entry>
+      <entry><ind>   1 </ind><dep> 180 </dep></entry>
+    </interpolation>
+    <center>
+        <x-m>0.0</x-m>
+        <y-m>0.0</y-m>
+        <z-m>0.6723</z-m>
+    </center>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>CockpitDoor</object-name>
+    <object-name>CWheel</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+       <binding>
+        <command>nasal</command>
+        <script>doj.CockpitDoor()</script>
+       </binding>
+    </action>
+  </animation>
+
+  <!-- Freightroom door -->
+  <animation>
+    <type>rotate</type>
+    <object-name>FreightDoor</object-name>
+    <object-name>FWheel</object-name>
+    <property>sim/multiplay/generic/float[8]</property>
+    <interpolation>
+      <entry><ind>   0 </ind><dep>   0 </dep></entry>
+      <entry><ind> 0.5 </ind><dep>   0 </dep></entry>
+      <entry><ind>   1 </ind><dep>-110 </dep></entry>
+    </interpolation>
+    <center>
+        <x-m>-1.3648</x-m>
+        <y-m>-0.2622</y-m>
+        <z-m>0.0</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>0</y>
+      <z>1</z>
+    </axis>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>FWheel</object-name>
+    <property>sim/multiplay/generic/float[8]</property>
+    <interpolation>
+      <entry><ind>   0 </ind><dep>   0 </dep></entry>
+      <entry><ind> 0.5 </ind><dep> 180 </dep></entry>
+      <entry><ind>   1 </ind><dep> 180 </dep></entry>
+    </interpolation>
+    <center>
+        <x-m>0.0</x-m>
+        <y-m>0.0</y-m>
+        <z-m>0.5478</z-m>
+    </center>
+    <axis>
+      <x>1</x>
+      <y>0</y>
+      <z>0</z>
+    </axis>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>FreightDoor</object-name>
+    <object-name>FWheel</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+       <binding>
+        <command>nasal</command>
+        <script>doj.FreightDoor()</script>
+       </binding>
+    </action>
+  </animation>
+</PropertyList>

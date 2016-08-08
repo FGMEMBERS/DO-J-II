@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+###############################################################################
+##
+##   Dornier DO J II - f - Bos (Wal)
+##   by Marc Kraus :: Lake of Constance Hangar
+##
+##   Copyright (C) 2012 - 2014  Marc Kraus  (info(at)marc-kraus.de)
+##
+###############################################################################
+-->
+<PropertyList>
+
+  <sim>
+    <author>Marc Kraus :: Lake of Constance Hangar</author>
+    <aircraft-version>1.1.5</aircraft-version>
+    <status>1.1.5</status>
+    <flight-model>yasim</flight-model>
+    <aero>DO-J-II-yasim</aero>
+
+    <type type="string">seaplane</type>
+
+    <sound>
+      <path>Aircraft/DO-J-II/Sounds/DO-J-II-sound.xml</path>
+    </sound>
+
+    <startup>
+      <splash-texture>Aircraft/DO-J-II/DO-J-II-splash.png</splash-texture>
+    </startup>
+
+    <fuel-fraction>0.2</fuel-fraction>
+
+    <chase-distance-m type="double" archive="y">-20.0</chase-distance-m>
+  
+    <multiplay>
+      <chat_display>1</chat_display>
+      <generic> 
+        <int n="0" type="int">0</int>  <!-- Copilot System -->
+        <int n="1" type="int">0</int>  <!-- 1 immat -->
+        <int n="2" type="int">0</int>  <!-- 2 immat -->
+        <int n="3" type="int">0</int>  <!-- 3 immat -->
+        <int n="4" type="int">0</int>  <!-- 4 immat -->
+        <int n="5" type="int">0</int>  <!-- 5 immat -->
+        <int n="6" type="int">0</int>  <!-- 6 immat -->
+        <int n="8" alias="/controls/special/wakes"/>
+        <int n="9" alias="/controls/lighting/nav-lights"/>
+        <int n="10" alias="/controls/lighting/landing-lights"/>
+        <int n="11" alias="/controls/lighting/strobe-state/state"/>
+        <int n="12"  alias="/controls/lighting/beacon-state/state"/>
+        <int n="13"  alias="/controls/special/shadow"/>
+        <int n="14"  alias="/controls/special/copilot-pos"/>                    <!-- show copilot -->
+        <int n="15"  alias="/controls/special/pilot-pos"/>                      <!-- show pilot pos -->
+        <int n="16"  alias="/engines/engine[0]/cranking"/>                      <!-- show cranking smoke -->
+        <int n="17"  alias="/engines/engine[1]/cranking"/>                      <!-- show cranking smoke -->       
+        <int n="18"  alias="/controls/special/catapult-carrier-crane/search-carrier"/>                      <!-- support for multiplayer heaving action -->
+        <int n="19"  alias="/controls/special/catapult-carrier-crane/hook-locked"/>                      <!-- support for multiplayer heaving action -->
+
+        <float n="0" alias="/position/altitude-agl-ft"/> 
+        <float n="1" alias="/orientation/pitch-deg"/>                           <!-- shadow -->
+        <float n="2" alias="/orientation/roll-deg"/>                            <!-- shadow -->
+        <float n="3" alias="/controls/lighting/instruments-norm"/>
+        <float n="4" alias="/controls/doors/position-norm[0]"/>
+        <float n="5" alias="/controls/doors/position-norm[1]"/>
+        <float n="6" alias="/controls/doors/position-norm[2]"/>
+        <float n="7" alias="/controls/doors/position-norm[3]"/>
+        <float n="8" alias="/controls/doors/position-norm[4]"/>
+        <float n="9" alias="/instrumentation/rdf/rotation-deg">0</float>          <!-- RDF for Copilot -->
+        <float n="10" alias="/instrumentation/slip-skid-ball/indicated-slip-skid"/> <!--for Copilot animation-->
+        <float n="11" alias="/instrumentation/turn-indicator/indicated-turn-rate"/><!-- for Copilot animation-->        
+        <float n="12" alias="/controls/special/catapult-carrier-crane/multi-turn"/><!-- for MP Crane action-->
+        <float n="13" alias="/controls/special/catapult-carrier-crane/multi-stand"/><!-- for MP Crane action--> 
+        <float n="14" alias="/sim/weight[1]/weight-lb"/>                           <!-- show Freight on board --> 
+        <float n="15" alias="/controls/special/catapult-carrier-crane/cargo-schwabenland"/><!-- for MP Cargo action in schwabenland.xml-->           
+        <float n="16" alias="/controls/special/mooring"/><!-- for MP view the boje -->           
+        <float n="17" alias="/autopilot/settings/heading-bug-deg"/><!-- for copilot view the heading on instruments -->     
+        <float n="18" alias="/controls/special/catapult-carrier-crane/cargo-westfalen"/><!-- for MP Cargo action in schwabenland.xml-->                
+
+        <!-- <string n="0" type="string"></string>        Dual Control analog TDM-mpp1 -->        
+        <string n="1" type="string"></string>        <!-- Sound and heaving Control for MP and Copilot -->
+      </generic>
+    </multiplay>
+
+    <help>
+      <title>DO J II f Bos</title>      
+      <key>
+        <name>s</name>
+        <desc>Start engine by engine (10sec each one)</desc>
+      </key>
+      <key>
+        <name>Ctrl + s</name>
+        <desc>Stop engine by engine</desc>
+      </key>
+      <key>
+        <name>></name>
+        <desc>Toggle cockpit - radioroom</desc>
+      </key>
+      <key>
+        <name>Shift + ></name>
+        <desc>Pilot stand up</desc>
+      </key>
+    </help>
+
+    <menubar>
+     <default>
+      <menu n="10">
+      <label>DO J II</label>
+      <enabled type="bool">true</enabled>
+      <item>
+        <label>Select Livery</label>
+        <binding>
+          <command>nasal</command>
+          <script>aircraft.livery.dialog.toggle()</script>
+        </binding>
+      </item>
+      <item>
+        <label>Immatriculation</label>
+        <binding>
+          <command>nasal</command>
+          <script>immat.immat_dialog.toggle()</script>
+        </binding>
+      </item>
+      </menu>
+     </default>
+    </menubar>
+
+    <view n="100">
+      <name>Pilot stand up</name>
+      <type>lookfrom</type>
+      <internal archive="y">false</internal>
+      <config>
+        <limits>
+          <enabled archive="y" type="bool">false</enabled>
+        </limits>
+        <from-model type="bool">true</from-model>
+        <from-model-idx type="int">0</from-model-idx>
+        <ground-level-nearplane-m type="double">0.01f</ground-level-nearplane-m>
+        <default-field-of-view-deg type="double"> 80 </default-field-of-view-deg>
+        <x-offset-m archive="y">-0.6 </x-offset-m>	<!-- Right -->
+        <y-offset-m archive="y"> 2.02 </y-offset-m>	<!-- Up    -->
+        <z-offset-m archive="y">-3.2 </z-offset-m>	<!-- Back  -->
+      </config>
+    </view>
+
+    <!--
+    <view n="101">
+      <name>Copilot</name>
+      <internal archive="y">true</internal>
+      <type>lookfrom</type>
+      <config>
+        <limits>
+          <enabled archive="y" type="bool">false</enabled>
+        </limits>
+        <from-model type="bool">true</from-model>
+        <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+        <x-offset-m archive="y"> 0.65 </x-offset-m>
+        <y-offset-m archive="y"> 1.33 </y-offset-m>
+        <z-offset-m archive="y"> -3.1 </z-offset-m>
+        <pitch-offset-deg> -5.000 </pitch-offset-deg>
+        <default-field-of-view-deg type="double"> 70 </default-field-of-view-deg>
+      </config>
+    </view>
+    --> 
+
+    <view n="102">
+      <name>Navigation Officer</name>
+      <internal archive="y">true</internal>
+      <type>lookfrom</type>
+      <config>
+        <from-model type="bool">true</from-model>
+        <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+        <x-offset-m archive="y">  0.41 </x-offset-m>	<!-- Right -->
+        <y-offset-m archive="y">  0.96 </y-offset-m>	<!-- Up    -->
+        <z-offset-m archive="y"> -1.60 </z-offset-m>	<!-- Back  -->
+        <pitch-offset-deg>0</pitch-offset-deg>
+        <default-field-of-view-deg>55</default-field-of-view-deg>
+      </config>
+    </view>
+
+    <view n="103">
+      <name>Freightroom</name>
+      <type>lookfrom</type>
+      <internal archive="y">true</internal>
+      <enabled type="bool">false</enabled>
+      <config>
+        <from-model type="bool">true</from-model>
+        <from-model-idx type="int">0</from-model-idx>
+        <ground-level-nearplane-m type="double">0.01f</ground-level-nearplane-m>
+        <default-field-of-view-deg type="double">50</default-field-of-view-deg>
+        <pitch-offset-deg>-5</pitch-offset-deg>
+        <heading-offset-deg>120</heading-offset-deg>
+        <x-offset-m archive="y"> 0.28 </x-offset-m>	<!-- Right -->
+        <y-offset-m archive="y"> 0.9 </y-offset-m>	<!-- Up    -->
+        <z-offset-m archive="y">-1.12 </z-offset-m>	<!-- Back  -->
+      </config>
+    </view>
+
+    <view n="104">
+      <name>Engines</name>
+      <type>lookfrom</type>
+      <internal archive="y">false</internal>
+      <enabled type="bool">false</enabled>
+      <config>
+        <from-model type="bool">true</from-model>
+        <from-model-idx type="int">0</from-model-idx>
+        <ground-level-nearplane-m type="double">0.01f</ground-level-nearplane-m>
+        <default-field-of-view-deg type="double">30</default-field-of-view-deg>
+        <pitch-offset-deg>-5</pitch-offset-deg>
+        <heading-offset-deg>-50</heading-offset-deg>
+        <x-offset-m archive="y">-3.13 </x-offset-m>	<!-- Right -->
+        <y-offset-m archive="y"> 4.23 </y-offset-m>	<!-- Up    -->
+        <z-offset-m archive="y"> 1.23 </z-offset-m>	<!-- Back  -->
+      </config>
+    </view>
+
+
+    <view n="0">   
+      <internal archive="y">true</internal>
+      <config>
+        <limits>
+          <enabled archive="y" type="bool">false</enabled>
+        </limits>
+        <x-offset-m archive="y">-0.65 </x-offset-m>	<!-- Right -->
+        <y-offset-m archive="y"> 1.33 </y-offset-m>	<!-- Up    -->
+        <z-offset-m archive="y"> -3.1 </z-offset-m>	<!-- Back  -->
+        <pitch-offset-deg> -5.000 </pitch-offset-deg>
+        <default-field-of-view-deg type="double"> 80 </default-field-of-view-deg>
+      </config>
+    </view>
+
+    <view n="1">
+      <config>
+        <target-z-offset-m archive="y" type="double">0</target-z-offset-m>
+      </config>
+    </view>
+
+    <view n="2">
+      <config>
+        <target-z-offset-m archive="y" type="double">0</target-z-offset-m>
+      </config>
+    </view>
+
+    <view n="3">
+      <config>
+        <target-z-offset-m archive="y" type="double">0</target-z-offset-m>
+      </config>
+    </view>
+
+    <view n="4">
+      <config>
+        <target-z-offset-m archive="y" type="double">0</target-z-offset-m>
+      </config>
+    </view>
+
+    <view n="5">
+      <config>
+        <target-z-offset-m archive="y" type="double">0</target-z-offset-m>
+      </config>
+    </view>
+
+    <view n="6">
+      <config>
+        <target-z-offset-m archive="y" type="double">0</target-z-offset-m>
+      </config>
+    </view>
+
+    <weight n="0">
+        <name>Crew</name>
+        <weight-lb type="double">180</weight-lb>
+        <max-lb>400</max-lb>
+        <min-lb>180</min-lb>
+    </weight>
+
+    <weight n="1">
+        <name>Freight</name>
+        <weight-lb type="double">800</weight-lb>
+        <max-lb>7000</max-lb>
+        <min-lb>0</min-lb>
+    </weight>
+
+  </sim>
+
+  <instrumentation>
+    <!-- the Siemens K4g steering -->
+    <k4>
+      <hydraulic-aileron type="double">0.0</hydraulic-aileron>
+      <hydraulic-press-a type="double">0.0</hydraulic-press-a>
+      <hydraulic-elevator type="double">0.0</hydraulic-elevator>
+      <hydraulic-press-e type="double">0.0</hydraulic-press-e>
+      <offset-knob-reset type="bool">0</offset-knob-reset>
+      <dir-pos-knob type="double">0</dir-pos-knob>
+      <clutch type="bool">0</clutch>
+      <control-turn type="bool">0</control-turn>
+    </k4>
+    <!-- for the heaving action -->
+	  <radar>
+		  <name>radar</name>
+		  <number>0</number>
+		  <update-interval-sec>0</update-interval-sec>
+			<serviceable type="bool">true</serviceable>
+			<switch type="string" archive="y">on</switch>
+			<range type="double" archive="y">40</range>
+			<mode-control type="int" archive="y">2</mode-control>
+			<limit-deg type="double">180</limit-deg>
+
+			<mode type="string" archive="y">WX</mode>
+			<lightning type="bool" archive="y">true</lightning>
+			<display-mode type="string" archive="y">plan</display-mode>
+
+			<display-controls>
+				<WX type="bool" archive="y">false</WX>
+				<data type="bool" archive="y">true</data>
+				<pos type="bool" archive="y">true</pos>
+			</display-controls>
+		</radar>
+    <rdf>
+      <power-on type="bool">0</power-on>
+      <frequency-select-knob type="bool">0</frequency-select-knob>
+      <rotation-deg type="double">90</rotation-deg>
+      <cat-ship-in-range type="bool">false</cat-ship-in-range>
+      <headset>
+        <enabled type="bool">0</enabled>
+        <position type="bool">0/</position>
+        <!-- properties swap if pilot fit headset -->
+        <atc-enabled type="bool">1</atc-enabled>
+        <atc-volume type="double">0.7</atc-volume>
+        <avionics-enabled type="bool">1</avionics-enabled>
+        <avionics-volume type="double">1.0</avionics-volume>
+        <chatter-enabled type="bool">0</chatter-enabled>
+        <chatter-volume type="double">0.0</chatter-volume>
+        <effects-enabled type="bool">1</effects-enabled>
+        <effects-volume type="double">0.08</effects-volume>
+        <master-enabled type="bool">1</master-enabled>
+        <master-volume type="double">0.7</master-volume>
+        <adf-ident-audible type="bool">1</adf-ident-audible>
+        <adf-volume-norm type="double">0.7</adf-volume-norm>
+        <nav-audio-btn type="bool">1</nav-audio-btn>
+        <nav-volume type="double">0.7</nav-volume>
+      </headset>
+    </rdf>
+    <adf>
+      <power-btn type="bool">0</power-btn>
+    </adf>
+    <afn2>
+      <heading-correction>0.0</heading-correction>
+    </afn2>
+    <!-- Flightgear Rallye Watch  -->
+    <frw>
+      <running type="bool">0</running>
+      <btn-mode type="bool">0</btn-mode>
+      <btn-reset type="bool">0</btn-reset>
+      <btn-start-stop type="bool">0</btn-start-stop>
+      <flight-time>
+        <start-time type="double">0</start-time>
+        <accu type="double">0</accu>
+        <total type="double">0</total>
+        <hours type="int">0</hours>
+        <minutes type="int">0</minutes>
+        <seconds type="int">0</seconds>
+      </flight-time>
+    </frw>
+  </instrumentation>
+
+  <controls>
+    <electric>
+      <battery-switch type="bool">0</battery-switch>
+    </electric>
+    <!-- close the brake on terrain (carrier) because Schwabenland catapult have 5 degree -->
+    <gear>
+      <brake-parking type="double">1</brake-parking>
+    </gear>
+    <lighting>
+      <beacon type="bool">0</beacon>
+      <landing-lights type="bool">0</landing-lights>
+      <nav-lights type="bool">0</nav-lights>
+    </lighting>
+    
+    <!-- this properties are only for the Schwabenland and Westphalen demos -->
+    <special>
+      <catapult-carrier-crane>
+        <search-carrier type="bool">0</search-carrier>
+        <hook-locked type="bool">0</hook-locked>
+        <heave type="double">0.0</heave>
+        <turn type="double">0.0</turn>
+        <towel type="double">0.0</towel>
+        <multi-turn type="double">0.0</multi-turn>
+        <multi-stand type="double">0.0</multi-stand>
+        <crane-is-free type="bool">1</crane-is-free>
+        <cargo-schwabenland type="double">18.0</cargo-schwabenland>
+        <cargo-westfalen type="double">18.0</cargo-westfalen>
+        <cat-elevator-westfalen type="double">0.0</cat-elevator-westfalen>
+      </catapult-carrier-crane>
+      <shadow type="bool">1</shadow>
+      <copilot-pos type="int">999</copilot-pos>   <!-- greater than 15 is not visible -->
+      <pilot-pos type="int">0</pilot-pos>   <!-- greater than 15 is not visible -->      
+      <hold-pos type="bool">0</hold-pos>
+      <hold-lon type="double">0.0</hold-lon>
+      <hold-lat type="double">0.0</hold-lat>
+      <hold-hdg type="double">0.0</hold-hdg>
+      <mooring type="double">0</mooring>
+      <pos-olli type="int">1</pos-olli> <!-- Oliver Hardy manage the pushback on catapult -->
+      <pos-stan type="int">1</pos-stan> <!-- Stan Laurel manage the catapult -->
+    </special>
+    <switches>
+      <clutch1-cover type="bool">1</clutch1-cover>
+      <clutch2-cover type="bool">1</clutch2-cover>
+    </switches>
+  </controls>
+
+  <engines>
+    <engine n="0">
+      <rpm>50</rpm>
+      <clutch type="bool">0</clutch>
+    </engine>
+    <engine n="1">
+      <rpm>50</rpm>
+      <clutch type="bool">0</clutch>
+    </engine>
+  </engines>
+
+  <input>
+    <keyboard n="0" include="/Input/Keyboard/carrier-bindings.xml">
+     <key n="115">
+      <name>s</name>
+      <desc>Start engines</desc>
+      <binding>
+       <command>nasal</command>
+       <script>doj.startEngines();</script>
+      </binding>
+     </key>
+      <key n="19">
+        <name>Ctrl-S</name>
+        <repeatable>false</repeatable>
+        <desc>Stop Engine</desc>
+        <binding>
+          <command>nasal</command>
+          <script>doj.stopEngines();</script>
+        </binding>
+      </key>
+      <key n="60">
+        <name> > </name>
+        <desc>View of the Radio Navigation Officer</desc>
+        <binding>
+          <command>nasal</command>
+          <script>doj.changeView(9);</script>
+        </binding>
+      </key>
+      <key n="62">
+        <name> Shift + > </name>
+        <desc>Pilot-stand-up</desc>
+        <binding>
+          <command>nasal</command>
+          <script>doj.changeView(8);</script>
+        </binding>
+      </key>
+      <key n="76">
+        <name> Shift + c </name>
+        <desc>Hook the catapult</desc>
+        <binding>
+          <command>nasal</command>
+          <script>doj.hookTheCatapult();</script>
+        </binding>
+      </key>
+    </keyboard>
+  </input>
+
+</PropertyList>
+

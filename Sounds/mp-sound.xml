@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+###############################################################################
+##
+##   Dornier DO J II - f - Bos (Wal)
+##   FDM by Marc Kraus :: Lake of Constance Hangar
+##
+##   Copyright (C) 2012 - 2014  Marc Kraus  (info(at)marc-kraus.de)
+##
+###############################################################################
+-->
+<PropertyList>
+
+<fx>
+
+    <engine>
+        <name>front engine</name>
+        <path>Sounds/wasp.wav</path>
+        <mode>looped</mode>
+        <condition>
+           <greater-than>
+            <property>engines/engine[0]/rpm</property>
+            <value>100</value>
+           </greater-than>
+        </condition>
+        <volume>
+            <property>engines/engine[0]/rpm</property>
+            <offset>-0.75</offset>
+            <factor>0.125</factor>
+            <min>0.0</min>
+            <max>1.0</max>
+        </volume>
+        <pitch>
+            <property>/engines/engine[0]/rpm</property>
+            <factor>0.0004</factor>
+            <offset>0.2</offset>
+        </pitch>
+        <reference-dist>250.0</reference-dist>
+        <max-dist>2000.0</max-dist>
+    </engine>
+
+    <engine>
+        <name>back engine</name>
+        <path>Sounds/wasp.wav</path>
+        <mode>looped</mode>
+        <condition>
+           <greater-than>
+            <property>engines/engine[1]/rpm</property>
+            <value>100</value>
+           </greater-than>
+        </condition>
+        <volume>
+            <property>engines/engine[1]/rpm</property>
+            <offset>-0.75</offset>
+            <factor>0.125</factor>
+            <min>0.0</min>
+            <max>1.0</max>
+        </volume>
+        <pitch>
+            <property>/engines/engine[1]/rpm</property>
+            <factor>0.0004</factor>
+            <offset>0.2</offset>
+        </pitch>
+        <reference-dist>250.0</reference-dist>
+        <max-dist>2000.0</max-dist>
+    </engine>
+
+</fx>
+
+</PropertyList>

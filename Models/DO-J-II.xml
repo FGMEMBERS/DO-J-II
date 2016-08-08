@@ -1,0 +1,1191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PropertyList>
+<!--
+###############################################################################
+##
+##   Dornier DO J II - f - Bos (Wal)
+##   by Marc Kraus :: Lake of Constance Hangar
+##
+##   Copyright (C) 2012 - 2014  Marc Kraus  (info(at)marc-kraus.de)
+##
+###############################################################################
+-->
+  <path>doj.ac</path>
+  <nasal>
+    <load>
+      var livery_update = aircraft.livery_update.new("Aircraft/DO-J-II/Models/Liveries", 10);
+    </load>
+
+    <unload>
+      livery_update.stop();
+    </unload>
+  </nasal>
+
+  <sound><path>Aircraft/DO-J-II/Sounds/mp-sound.xml</path></sound>
+
+  <animation>
+    <object-name>aile</object-name>
+    <object-name>aileronD</object-name>
+    <object-name>aileronG</object-name>
+    <object-name>axes</object-name>
+    <object-name>derive</object-name>
+    <object-name>direction</object-name>
+    <object-name>fuselage</object-name>
+    <object-name>flotteurs</object-name>
+    <object-name>elevator</object-name>
+    <object-name>cabin.001</object-name>
+    <object-name>cabin.002</object-name>
+    <object-name>hatch.001</object-name>
+    <object-name>hatch.002</object-name>
+    <object-name>hatch.003</object-name>
+    <object-name>hhatch.001</object-name>
+    <object-name>hhatch.002</object-name>
+    <object-name>hatchwheel</object-name>
+    <object-name>hook</object-name>
+    <object-name>roof</object-name>
+    <object-name>towel</object-name>
+  </animation>
+
+	<!-- No preview for fgrun-->
+	<animation>
+    <object-name>propBackDisc</object-name>
+    <object-name>propBackBlur</object-name>
+    <object-name>propFrontDisc</object-name>
+    <object-name>propFrontBlur</object-name>
+    <object-name>towel</object-name>
+    <object-name>boje</object-name>
+		<nopreview/>
+	</animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>cabin.001</object-name>
+    <object-name>hhatch.001</object-name>
+    <object-name>hhatch.002</object-name>   
+    <condition>
+      <not>
+			  <property>/sim/rendering/rembrandt/enabled</property>
+      </not>
+    </condition>
+      <emission>
+        <red>0.08</red>
+        <green>0.08</green>
+        <blue>0.08</blue>
+        <factor-prop>sim/multiplay/generic/float[3]</factor-prop>
+      </emission>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>aile</object-name>
+    <object-name>aileronD</object-name>
+    <object-name>aileronG</object-name>
+    <object-name>axes</object-name>
+    <object-name>derive</object-name>
+    <object-name>direction</object-name>
+    <object-name>fuselage</object-name>
+    <object-name>flotteurs</object-name>
+    <object-name>elevator</object-name>
+    <object-name>cabin.001</object-name>
+    <object-name>cabin.002</object-name>
+    <object-name>hatch.001</object-name>
+    <object-name>hatch.002</object-name>
+    <object-name>hatch.003</object-name>
+    <object-name>hatchwheel</object-name>
+    <object-name>hook</object-name>
+    <object-name>roof</object-name>
+    <property-base>sim/model/livery</property-base>
+    <texture-prop>texture</texture-prop>
+    <texture>texture.png</texture>
+  </animation>
+
+  <!-- working for Rembrandt -->
+	<effect>
+		<inherits-from>Effects/model-transparent</inherits-from>
+    <object-name>propBackDisc</object-name>
+    <object-name>propBackBlur</object-name>
+    <object-name>propFrontDisc</object-name>
+    <object-name>propFrontBlur</object-name>
+	</effect>
+
+  <animation>
+    <object-name>window</object-name>
+  </animation>
+
+  <animation>
+    <type>shader</type>
+    <shader>chrome</shader>
+    <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
+    <object-name>window</object-name>
+  </animation>
+
+  <animation>
+    <type>noshadow</type>
+    <object-name>window</object-name>
+  </animation>
+
+  <effect>
+    <!-- <inherits-from>Aircraft/Generic/Effects/Fuselagereflect</inherits-from> -->
+	  <inherits-from>Effects/model-combined-deferred</inherits-from>
+    <object-name>fuselage</object-name>
+    <object-name>flotteurs</object-name>
+    <object-name>aile</object-name>
+    <object-name>aileronD</object-name>
+    <object-name>aileronG</object-name>
+    <object-name>axes</object-name>
+    <object-name>derive</object-name>
+    <object-name>direction</object-name>
+    <object-name>fuselage</object-name>
+    <object-name>flotteurs</object-name>
+    <object-name>elevator</object-name>
+    <object-name>cabin.002</object-name>
+    <object-name>hatch.001</object-name>
+    <object-name>hatch.002</object-name>
+    <object-name>hatch.003</object-name>
+    <object-name>hook</object-name>
+    <object-name>block</object-name>
+    <object-name>auspuff</object-name>    
+    <object-name>propFront</object-name>    
+    <object-name>propFrontBol</object-name>    
+    <object-name>propBack</object-name>    
+    <object-name>propBackBol</object-name>
+    <object-name>roof</object-name>
+    <object-name>boje</object-name>
+  </effect>
+
+  <animation>
+    <type>select</type>
+    <object-name>Shadow</object-name>
+		<condition>
+			<and>
+				<not>
+					<property>/sim/rendering/rembrandt/enabled</property>
+				</not>
+        <property>sim/multiplay/generic/int[13]</property>
+			</and>
+		</condition>
+  </animation>
+
+  <model>
+    <name>Shadow</name>
+    <path>Aircraft/DO-J-II/Models/shadow.xml</path>
+    <offsets>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+  <!-- propeller in the front -->
+  <animation>
+    <name>frontProp</name>
+    <object-name>propFrontDisc</object-name>
+    <object-name>propFrontBlur</object-name>
+    <object-name>propFront</object-name>
+    <object-name>propFrontBol</object-name>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>propFrontDisc</object-name>
+    <condition>
+      <greater-than>
+        <property>engines/engine[0]/rpm</property>
+        <value>600</value>
+      </greater-than>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>propFrontBlur</object-name>
+    <condition>
+    <and>
+      <greater-than>
+        <property>engines/engine[0]/rpm</property>
+        <value>300.000</value>
+      </greater-than>
+      <less-than>
+        <property>engines/engine[0]/rpm</property>
+        <value>600.001</value>
+      </less-than>
+    </and>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>propFront</object-name>
+    <condition>
+      <less-than>
+        <property>engines/engine[0]/rpm</property>
+        <value>600</value>
+      </less-than>
+    </condition>
+  </animation>
+
+  <animation>
+   <type>spin</type>
+    <object-name>frontProp</object-name>
+    <property>engines/engine[0]/rpm</property>
+   <factor> 1 </factor>
+   <center>
+     <x-m>0.0</x-m>
+     <y-m>0.0</y-m>
+     <z-m>3.4</z-m>
+   </center>
+   <axis>
+    <x> 1 </x>
+    <y> 0 </y>
+    <z> 0 </z>
+   </axis>
+  </animation>
+
+  <!-- propeller at the backside -->
+  <animation>
+    <name>backProp</name>
+    <object-name>propBackDisc</object-name>
+    <object-name>propBackBlur</object-name>
+    <object-name>propBack</object-name>
+    <object-name>propBackBol</object-name>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>propBackDisc</object-name>
+    <condition>
+      <greater-than>
+        <property>engines/engine[1]/rpm</property>
+        <value>600</value>
+      </greater-than>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>propBackBlur</object-name>
+    <condition>
+    <and>
+      <greater-than>
+        <property>engines/engine[1]/rpm</property>
+        <value>300.000</value>
+      </greater-than>
+      <less-than>
+        <property>engines/engine[1]/rpm</property>
+        <value>600.001</value>
+      </less-than>
+    </and>
+    </condition>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>propBack</object-name>
+    <condition>
+      <less-than>
+        <property>engines/engine[1]/rpm</property>
+        <value>600</value>
+      </less-than>
+    </condition>
+  </animation>
+
+  <animation>
+   <type>spin</type>
+    <object-name>backProp</object-name>
+    <property>engines/engine[1]/rpm</property>
+   <factor> 1 </factor>
+   <center>
+     <x-m>0.0</x-m>
+     <y-m>0.0</y-m>
+     <z-m>3.4</z-m>
+   </center>
+   <axis>
+    <x>-1 </x>
+    <y> 0 </y>
+    <z> 0 </z>
+   </axis>
+  </animation>
+
+  <!--  towel and buoy for mooring --> 
+  <animation>
+  <type>select</type>
+  <object-name>towel</object-name>
+    <condition>
+      <property>sim/multiplay/generic/float[16]</property>
+      <value>1</value>
+    </condition>
+  </animation>
+
+	<animation>
+        <type>translate</type>
+        <object-name>towel</object-name>
+        <property>/orientation/pitch-deg</property>
+        <factor>0.02</factor>
+        <center>
+            <x-m>-6.101</x-m>
+            <y-m>0.009</y-m>
+            <z-m>1.0</z-m>
+        </center>
+        <axis>
+          <x>0</x>
+          <y>0</y>
+          <z>-1</z>
+        </axis>
+ 	</animation>
+
+	<animation>
+        <type>rotate</type>
+        <object-name>towel</object-name>
+        <property>/orientation/roll-deg</property>
+        <factor>5</factor>
+        <center>
+            <x-m>-6.101</x-m>
+            <y-m>0.009</y-m>
+            <z-m>1.0</z-m>
+        </center>
+        <axis>
+          <x>-1</x>
+          <y>0</y>
+          <z>0</z>
+        </axis>
+ 	</animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>towel</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-assign</command>
+        <property>/controls/special/mooring</property>
+        <value>0</value>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>material</type>
+    <object-name>boje</object-name>
+    <emission>
+      <red>0.1</red>
+      <green>0.1</green>
+      <blue>0.1</blue>
+      <factor-prop>sim/multiplay/generic/float[3]</factor-prop>
+    </emission>
+  </animation>
+
+  <animation>
+    <type>select</type>
+    <object-name>boje</object-name>
+      <condition>
+        <equals>
+          <property>sim/multiplay/generic/float[16]</property>
+          <value>1</value>
+        </equals>
+      </condition>
+  </animation>
+
+	<animation>
+        <type>translate</type>
+        <object-name>boje</object-name>
+        <property>/orientation/pitch-deg</property>
+        <factor>0.06</factor>
+        <axis>
+          <x>0</x>
+          <y>0</y>
+          <z>-1</z>
+        </axis>
+ 	</animation>
+
+	<animation>
+        <type>rotate</type>
+        <object-name>boje</object-name>
+        <property>/orientation/roll-deg</property>
+        <factor>5</factor>
+        <axis>
+          <x>-1</x>
+          <y>0</y>
+          <z>0</z>
+        </axis>
+ 	</animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>boje</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>property-assign</command>
+        <property>controls/special/mooring</property>
+        <value>0</value>
+      </binding>
+    </action>
+  </animation>
+
+  <!-- smoke on start up engines -->
+	<model>
+		<path>Aircraft/DO-J-II/Models/Effects/startup-smoke-first.xml</path>
+		<offsets>
+			<x-m>-0.327</x-m>
+			<y-m>-0.99</y-m>
+			<z-m> 3.48</z-m>
+			<roll-deg>0</roll-deg>
+			<pitch-deg>-0.1</pitch-deg>
+			<heading-deg>-60</heading-deg>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/DO-J-II/Models/Effects/startup-smoke-first.xml</path>
+		<offsets>
+			<x-m> 0.26</x-m>
+			<y-m>-0.99</y-m>
+			<z-m> 3.48</z-m>
+			<roll-deg>0</roll-deg>
+			<pitch-deg>-0.1</pitch-deg>
+			<heading-deg>-60</heading-deg>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/DO-J-II/Models/Effects/startup-smoke-first.xml</path>
+		<offsets>
+			<x-m>-0.327</x-m>
+			<y-m> 0.99</y-m>
+			<z-m> 3.48</z-m>
+			<roll-deg>0</roll-deg>
+			<pitch-deg>-0.1</pitch-deg>
+			<heading-deg>-60</heading-deg>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/DO-J-II/Models/Effects/startup-smoke-first.xml</path>
+		<offsets>
+			<x-m> 0.26</x-m>
+			<y-m> 0.99</y-m>
+			<z-m> 3.48</z-m>
+			<roll-deg>0</roll-deg>
+			<pitch-deg>-0.1</pitch-deg>
+			<heading-deg>-60</heading-deg>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/DO-J-II/Models/Effects/startup-smoke-second.xml</path>
+		<offsets>
+			<x-m> 2.516</x-m>
+			<y-m>-0.99</y-m>
+			<z-m> 3.48</z-m>
+			<roll-deg>0</roll-deg>
+			<pitch-deg>-0.1</pitch-deg>
+			<heading-deg>-60</heading-deg>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/DO-J-II/Models/Effects/startup-smoke-second.xml</path>
+		<offsets>
+			<x-m> 3.23</x-m>
+			<y-m>-0.99</y-m>
+			<z-m> 3.48</z-m>
+			<roll-deg>0</roll-deg>
+			<pitch-deg>-0.1</pitch-deg>
+			<heading-deg>-60</heading-deg>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/DO-J-II/Models/Effects/startup-smoke-second.xml</path>
+		<offsets>
+			<x-m> 2.516</x-m>
+			<y-m> 0.99</y-m>
+			<z-m> 3.48</z-m>
+			<roll-deg>0</roll-deg>
+			<pitch-deg>-0.1</pitch-deg>
+			<heading-deg>-60</heading-deg>
+		</offsets>
+	</model>
+	<model>
+		<path>Aircraft/DO-J-II/Models/Effects/startup-smoke-second.xml</path>
+		<offsets>
+			<x-m> 3.23</x-m>
+			<y-m> 0.99</y-m>
+			<z-m> 3.48</z-m>
+			<roll-deg>0</roll-deg>
+			<pitch-deg>-0.1</pitch-deg>
+			<heading-deg>-60</heading-deg>
+		</offsets>
+	</model>
+
+  <!-- Immatriculation -->
+  <model>
+    <path>Aircraft/DO-J-II/Models/Immat/immat.xml</path>
+    <offsets>
+      <x-m> 0 </x-m>
+      <y-m> 0 </y-m>
+      <z-m> 0 </z-m>
+    </offsets>
+  </model>
+
+  <!-- the hatches -->
+	<animation>
+        <type>translate</type>
+        <object-name>hatch.001</object-name>
+        <property>sim/multiplay/generic/float[4]</property>
+        <factor>0.6</factor>
+        <axis>
+          <x>0.9</x>
+          <y>-0.02</y>
+          <z>0.03</z>
+        </axis>
+ 	</animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>hhatch.001</object-name>
+    <property>sim/multiplay/generic/float[4]</property>
+    <interpolation>
+      <entry><ind>   0 </ind><dep>   0 </dep></entry>
+      <entry><ind> 0.001 </ind><dep>-30 </dep></entry>
+      <entry><ind> 0.999 </ind><dep>-30 </dep></entry>
+      <entry><ind>   1 </ind><dep> -50 </dep></entry>
+    </interpolation>
+    <axis>
+      <x1-m>-3.7230</x1-m>
+      <y1-m>-0.5072</y1-m>
+      <z1-m> 1.475</z1-m>
+      <x2-m>-3.7097</x2-m>
+      <y2-m>-0.6</y2-m>
+      <z2-m>1.475</z2-m>
+    </axis>
+  </animation>
+
+  <!-- pilot hatch -->
+  <animation>
+    <type>pick</type>
+    <object-name>hatch.001</object-name>
+    <object-name>hhatch.001</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+       <binding>
+        <command>nasal</command>
+        <script>doj.PilotDoor()</script>
+       </binding>
+        <binding>
+          <command>property-toggle</command>
+          <property>/sim/sound/switch</property>
+        </binding>
+    </action>
+  </animation>
+
+  <!-- copilot hatch -->
+	<animation>
+        <type>translate</type>
+        <object-name>hatch.002</object-name>
+        <property>sim/multiplay/generic/float[5]</property>
+        <factor>0.6</factor>
+        <axis>
+          <x>0.9</x>
+          <y>0.02</y>
+          <z>0.03</z>
+        </axis>
+ 	</animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>hhatch.002</object-name>
+    <property>sim/multiplay/generic/float[5]</property>
+    <interpolation>
+      <entry><ind>   0 </ind><dep>   0 </dep></entry>
+      <entry><ind> 0.001 </ind><dep> 30 </dep></entry>
+      <entry><ind> 0.999 </ind><dep> 30 </dep></entry>
+      <entry><ind>   1 </ind><dep>  50 </dep></entry>
+    </interpolation>
+    <axis>
+      <x1-m>-3.723</x1-m>
+      <y1-m>-0.5458</y1-m>
+      <z1-m> 1.475</z1-m>
+      <x2-m>-3.7095</x2-m>
+      <y2-m> 0.6372</y2-m>
+      <z2-m> 1.475</z2-m>
+    </axis>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>hatch.002</object-name>
+    <object-name>hhatch.002</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+       <binding>
+        <command>nasal</command>
+        <script>doj.CopilotDoor()</script>
+       </binding>
+        <binding>
+          <command>property-toggle</command>
+          <property>/sim/sound/switch</property>
+        </binding>
+    </action>
+  </animation>
+
+  <!-- freightroom hatch -->
+  <animation>
+    <type>rotate</type>
+    <object-name>hatch.003</object-name>
+    <object-name>hatchwheel</object-name>
+    <property>sim/multiplay/generic/float[6]</property>
+    <interpolation>
+      <entry><ind>   0 </ind><dep>   0 </dep></entry>
+      <entry><ind> 0.5 </ind><dep>   0 </dep></entry>
+      <entry><ind>   1 </ind><dep> 110 </dep></entry>
+    </interpolation>
+    <center>
+        <x-m>1.734</x-m>
+        <y-m>0.0</y-m>
+        <z-m>1.187</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>1</y>
+      <z>0</z>
+    </axis>
+  </animation>
+  <animation>
+    <type>rotate</type>
+    <object-name>hatchwheel</object-name>
+    <property>sim/multiplay/generic/float[6]</property>
+    <interpolation>
+      <entry><ind>   0 </ind><dep>   0 </dep></entry>
+      <entry><ind> 0.5 </ind><dep> 180 </dep></entry>
+      <entry><ind>   1 </ind><dep> 180 </dep></entry>
+    </interpolation>
+    <center>
+        <x-m>1.292</x-m>
+        <y-m>0.0</y-m>
+        <z-m>0.0</z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>0</y>
+      <z>1</z>
+    </axis>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>hatch.003</object-name>
+    <object-name>hatchwheel</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+       <binding>
+        <command>nasal</command>
+        <script>doj.FreightHatch()</script>
+       </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>hook</object-name>
+    <property>/sim/model/pushback/target-speed-fps</property>
+    <interpolation>
+      <entry><ind>   1 </ind><dep>  -40 </dep></entry>
+      <entry><ind>   0 </ind><dep>   0 </dep></entry>
+      <entry><ind>   -1 </ind><dep>  40 </dep></entry>
+    </interpolation>
+    <center>
+        <x-m>-6.103</x-m>
+        <y-m>0.0</y-m>
+        <z-m>0.0</z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+  <animation>
+    <type>pick</type>
+    <object-name>hook</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>
+           setprop("/controls/gear/brake-parking",1);
+           interpolate("/sim/model/pushback/target-speed-fps", 0, 0.5);
+        </script>
+      </binding>	
+    </action>
+    <action>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+      <binding>
+        <command>nasal</command>
+        <script>
+           setprop("/controls/gear/brake-parking",0);
+        </script>
+      </binding>	
+      <binding>
+          <command>property-adjust</command>
+          <property>/sim/model/pushback/target-speed-fps</property>
+          <step>0.1</step>
+          <min>-1</min>
+          <max> 1</max>
+      </binding>
+    </action>
+    <action>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+      <binding>
+        <command>nasal</command>
+        <script>
+           setprop("/controls/gear/brake-parking",0);
+        </script>
+      </binding>	
+      <binding>
+          <command>property-adjust</command>
+          <property>/sim/model/pushback/target-speed-fps</property>
+          <step>-0.1</step>
+          <min>-1</min>
+          <max> 1</max>
+      </binding>
+    </action>
+  </animation>
+
+<!-- cockpit -->
+  <model>
+    <name>Cockpit</name>
+    <path>Aircraft/DO-J-II/Models/Cockpit/DO-J-II-Cockpit.xml</path>
+    <offsets>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+<!-- radioroom -->
+  <model>
+    <name>Radioroom</name>
+    <path>Aircraft/DO-J-II/Models/Cabines/DO-J-II-Radioroom.xml</path>
+    <offsets>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+<!-- freightroom -->
+  <model>
+    <name>Freightroom</name>
+    <path>Aircraft/DO-J-II/Models/Cabines/DO-J-II-Freightroom.xml</path>
+    <offsets>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+  <model>
+    <name>Freight</name>
+    <path>Aircraft/DO-J-II/Models/Freight/DO-J-II-Freight.xml</path>
+    <offsets>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+<!-- pilot -->
+  <model>
+    <name>Pilot</name>
+    <path>Aircraft/DO-J-II/Models/Pilot/pilot.xml</path>
+    <offsets>
+      <x-m>-3.67</x-m>
+      <y-m>-0.64</y-m>
+      <z-m> 0.65</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+  <animation>
+  <type>select</type>
+  <object-name>Pilot</object-name>
+    <condition>
+      <not>
+        <or>
+          <equals>
+            <property>sim/multiplay/generic/int[15]</property>
+            <value>8</value>
+          </equals>
+          <equals>
+            <property>sim/multiplay/generic/int[15]</property>
+            <value>9</value>
+          </equals>
+        </or>
+      </not>
+    </condition>
+  </animation>
+
+<!-- pilot stand up in cockpit -->
+  <model>
+    <name>Pilot-Stand-Up</name>
+    <path>Aircraft/DO-J-II/Models/Pilot/pilot-stand-up.xml</path>
+    <offsets>
+      <x-m>-3.30</x-m>
+      <y-m>-0.59</y-m>
+      <z-m> 0.90</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+  <animation>
+  <type>select</type>
+  <object-name>Pilot-Stand-Up</object-name>
+    <condition>
+      <equals>
+        <property>sim/multiplay/generic/int[15]</property>
+        <value>8</value>
+      </equals>
+    </condition>
+  </animation>
+
+<!-- copilot in cockpit -->
+  <model>
+    <name>Copilot</name>
+    <path>Aircraft/DO-J-II/Models/Pilot/copilot.xml</path>
+    <offsets>
+      <x-m>-3.67</x-m>
+      <y-m> 0.59</y-m>
+      <z-m> 0.65</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+  <animation>
+  <type>select</type>
+  <object-name>Copilot</object-name>
+    <condition>
+        <less-than>
+          <property>sim/multiplay/generic/int[14]</property>
+          <value>99</value>
+        </less-than>
+        <not>
+          <or>
+            <equals>
+              <property>sim/multiplay/generic/int[14]</property>
+              <value>8</value>
+            </equals>
+            <equals>
+              <property>sim/multiplay/generic/int[14]</property>
+              <value>9</value>
+            </equals>
+          </or>
+        </not>
+    </condition>
+  </animation>
+
+<!-- copilot in radioroom -->
+  <model>
+    <name>Navigation-Officer</name>
+    <path>Aircraft/DO-J-II/Models/Pilot/copilot.xml</path>
+    <offsets>
+      <x-m>-1.8066</x-m>
+      <y-m> 0.5322</y-m>
+      <z-m> 0.30</z-m>
+      <pitch-deg>-15</pitch-deg>
+      <heading-deg>-45 </heading-deg>
+    </offsets>
+  </model>
+
+  <animation>
+  <type>select</type>
+  <object-name>Navigation-Officer</object-name>
+    <condition>
+      <or>
+        <equals>
+          <property>sim/multiplay/generic/int[14]</property>
+          <value>9</value>
+        </equals>
+        <equals>
+          <property>sim/multiplay/generic/int[15]</property>
+          <value>9</value>
+        </equals>
+      </or>
+    </condition>
+  </animation>
+
+<!-- copilot stand up in cockpit -->
+  <model>
+    <name>Copilot-Stand-Up</name>
+    <path>Aircraft/DO-J-II/Models/Pilot/copilot-stand-up.xml</path>
+    <offsets>
+      <x-m>-3.30</x-m>
+      <y-m> 0.59</y-m>
+      <z-m> 0.90</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+  <animation>
+  <type>select</type>
+  <object-name>Copilot-Stand-Up</object-name>
+    <condition>
+      <equals>
+        <property>sim/multiplay/generic/int[14]</property>
+        <value>8</value>
+      </equals>
+    </condition>
+  </animation>
+
+<!-- Lights -->
+  <model>
+    <name>Lights</name>
+    <path>Aircraft/DO-J-II/Models/Lights/lights.xml</path>
+    <offsets>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+  <!-- animation of ailerons -->
+  <animation>
+    <type>rotate</type>
+    <object-name>aileronG</object-name>
+    <property>surface-positions/left-aileron-pos-norm</property>
+    <factor>  15 </factor>
+    <center>
+      <x-m> 3.684 </x-m>
+      <y-m> 0.000 </y-m>
+      <z-m> 2.188 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>aileronD</object-name>
+    <property>surface-positions/right-aileron-pos-norm</property>
+    <factor>  15 </factor>
+    <center>
+      <x-m> 3.684 </x-m>
+      <y-m> 0.000 </y-m>
+      <z-m> 2.188 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <!-- animation of elevator -->
+  <animation>
+    <type>rotate</type>
+    <object-name>elevator</object-name>
+    <property>surface-positions/elevator-pos-norm</property>
+    <factor> 14 </factor>
+    <center>
+      <x-m> 11.243 </x-m>
+      <y-m> 0.000 </y-m>
+      <z-m> 1.736 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <!-- animation of rudder -->
+  <animation>
+    <type>rotate</type>
+    <object-name>direction</object-name>
+    <property>surface-positions/rudder-pos-norm</property>
+    <factor>25</factor>
+    <center>
+      <x-m>11.558 </x-m>
+      <y-m> 0.0 </y-m>
+      <z-m> 0.0 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>rudder</object-name>
+    <property>surface-positions/rudder-pos-norm</property>
+    <factor>25</factor>
+    <center>
+      <x-m>7.185 </x-m>
+      <y-m> 0.0 </y-m>
+      <z-m> 0.0 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+
+  <!-- interieur lights -->
+  <model>
+      <name>InnerLight</name>
+      <path>Aircraft/DO-J-II/Models/Lights/cockpit-light.xml</path>
+      <offsets>
+          <x-m>0</x-m>
+          <y-m>0</y-m>
+          <z-m>0</z-m>
+          <pitch-deg>0.0</pitch-deg>
+      </offsets>
+  </model>
+
+  <!-- Wave effects -->
+  <!-- front center -->
+  <model>
+    <name>Wake1</name>
+    <path>Aircraft/DO-J-II/Models/Effects/wakes/wake.xml</path>
+    <offsets>
+      <x-m>  0.0 </x-m>
+      <y-m>  0.0 </y-m>
+      <z-m> -1.80 </z-m>
+      <roll-deg>    0 </roll-deg>
+      <pitch-deg> -35 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
+    </offsets>
+  </model> 
+
+  <model>
+    <name>Wake2</name>
+    <path>Aircraft/DO-J-II/Models/Effects/wakes/wake.xml</path>
+    <offsets>
+      <x-m>  0.0 </x-m>
+      <y-m>  0.0 </y-m>
+      <z-m> -1.80 </z-m>
+      <roll-deg>    0 </roll-deg>
+      <pitch-deg> -35 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
+    </offsets>
+  </model>
+ 
+  <!-- float right -->
+  <model>
+    <name>Wake3</name>
+    <path>Aircraft/DO-J-II/Models/Effects/wakes/wake.xml</path>
+    <offsets>
+      <x-m>  0.992 </x-m>
+      <y-m> -1.640 </y-m>
+      <z-m> -1.494 </z-m>
+      <roll-deg>    0 </roll-deg>
+      <pitch-deg> -45 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
+    </offsets>
+  </model> 
+
+  <!-- float left -->
+  <model>
+    <name>Wake4</name>
+    <path>Aircraft/DO-J-II/Models/Effects/wakes/wake.xml</path>
+    <offsets>
+      <x-m>  0.992 </x-m>
+      <y-m>  1.640 </y-m>
+      <z-m> -1.494 </z-m>
+      <roll-deg>    0 </roll-deg>
+      <pitch-deg> -45 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
+    </offsets>
+  </model> 
+
+  <!-- front left -->
+  <model>
+    <name>Wake5</name>
+    <path>Aircraft/DO-J-II/Models/Effects/wakes/wake.xml</path>
+    <offsets>
+      <x-m> -6.223 </x-m>
+      <y-m> -0.64 </y-m>
+      <z-m> -1.5 </z-m>
+      <roll-deg>    0 </roll-deg>
+      <pitch-deg> -90 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
+    </offsets>
+  </model> 
+
+  <!-- front right -->
+  <model>
+    <name>Wake6</name>
+    <path>Aircraft/DO-J-II/Models/Effects/wakes/wake.xml</path>
+    <offsets>
+      <x-m> -6.223 </x-m>
+      <y-m>  0.64 </y-m>
+      <z-m> -1.5 </z-m>
+      <roll-deg>    0 </roll-deg>
+      <pitch-deg> -90 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
+    </offsets>
+  </model> 
+
+  <!-- center left -->
+  <model>
+    <name>Wake7</name>
+    <path>Aircraft/DO-J-II/Models/Effects/wakes/wake.xml</path>
+    <offsets>
+      <x-m> -2.635 </x-m>
+      <y-m> -1.44 </y-m>
+      <z-m> -1.5</z-m>
+      <roll-deg>    0 </roll-deg>
+      <pitch-deg> -90 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
+    </offsets>
+  </model> 
+
+  <!-- center right -->
+  <model>
+    <name>Wake8</name>
+    <path>Aircraft/DO-J-II/Models/Effects/wakes/wake.xml</path>
+    <offsets>
+      <x-m> -2.635 </x-m>
+      <y-m>  1.44 </y-m>
+      <z-m> -1.5 </z-m>
+      <roll-deg>    0 </roll-deg>
+      <pitch-deg> -90 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
+    </offsets>
+  </model>
+
+  <animation>
+    <type>select</type>
+    <object-name>Wake1</object-name>
+    <object-name>Wake2</object-name>
+    <object-name>Wake3</object-name>
+    <object-name>Wake4</object-name>
+    <object-name>Wake5</object-name>
+    <object-name>Wake6</object-name>
+    <object-name>Wake7</object-name>
+    <object-name>Wake8</object-name>
+    <condition>
+      <not>
+        <property>sim/current-view/internal</property>
+      </not>
+    </condition>
+  </animation> 
+
+</PropertyList>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+###############################################################################
+##
+##   Dornier DO J II - f - Bos (Wal)
+##   by Marc Kraus :: Lake of Constance Hangar
+##
+##   Copyright (C) 2012 - 2014  Marc Kraus  (info(at)marc-kraus.de)
+##
+###############################################################################
+-->
+<PropertyList include="DO-J-II-root.xml">
+
+  <sim n="0">
+    <description>Dornier DO J II</description>
+
+    <model>
+      <path archive="y">Aircraft/DO-J-II/Models/DO-J-II.xml</path>
+      <livery>
+        <file type="string">Dornier</file>
+      </livery>
+    </model>
+
+    <remote>
+     <pilot-callsign type="string"/>
+    </remote>
+
+    <menubar n="0">
+     <default n="0">
+      <menu n="10">
+      <item n="3">
+       <label>Select MP-Copilot</label>
+       <binding>
+        <command>nasal</command>
+        <script>
+          dual_control_tools.copilot_dialog.show(aircraft_dual_control.copilot_type);
+         </script>
+        </binding>
+       </item>
+      </menu>
+     </default>
+    </menubar>  
+  </sim>
+  
+  <nasal>
+    <doj>
+      <file>Aircraft/DO-J-II/Nasal/doj.nas</file>
+      <file>Aircraft/DO-J-II/Nasal/electrical.nas</file>
+      <file>Aircraft/DO-J-II/Nasal/k4.nas</file>
+      <file>Aircraft/DO-J-II/Nasal/liveries.nas</file>
+      <file>Aircraft/DO-J-II/Nasal/rdf.nas</file>
+      <file>Aircraft/DO-J-II/Nasal/starter.nas</file>
+      <file>Aircraft/DO-J-II/Nasal/afn2.nas</file>
+      <file>Aircraft/DO-J-II/Nasal/crane-action.nas</file>
+      <file>Aircraft/DO-J-II/Nasal/hold-pos.nas</file>
+    </doj>
+    <immat>
+      <file>Aircraft/DO-J-II/Nasal/immat.nas</file>
+    </immat>
+    <frw>
+      <file>Aircraft/DO-J-II/Nasal/frw.nas</file>
+    </frw>
+<!--
+		<sar_service>
+			<file>Aircraft/DO-J-II/SAR/sar.nas</file>
+		</sar_service>
+-->
+    <dual_control_tools>
+     <file>Aircraft/DO-J-II/Nasal/Gidenstam/dual-control-tools.nas</file>
+    </dual_control_tools>
+    <aircraft_dual_control>
+     <file>Aircraft/DO-J-II/Nasal/doj-dual-control.nas</file>
+    </aircraft_dual_control>
+    <dual_control>
+     <file>Aircraft/DO-J-II/Nasal/Gidenstam/pilot-dual-control.nas</file>
+    </dual_control>
+
+  </nasal>
+
+
+  <dual-control>
+    <active type="bool">0</active>
+    <i-am-the-pilot type="bool">1</i-am-the-pilot>
+  </dual-control>
+  
+</PropertyList>
+

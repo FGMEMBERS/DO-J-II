@@ -1,0 +1,800 @@
+<PropertyList>
+<!--
+###############################################################################
+##
+##   Dornier DO J II - f - Bos (Wal)
+##   by Marc Kraus :: Lake of Constance Hangar
+##
+##   Copyright (C) 2012 - 2014  Marc Kraus  (info(at)marc-kraus.de)
+##
+###############################################################################
+-->
+	<path>doj-cockpit.ac</path>
+  <animation>
+      <type>material</type>
+      <object-name>ailtrimwheel</object-name>
+      <object-name>eltrimwheel</object-name>
+      <object-name>lever</object-name>
+      <object-name>pedal.001</object-name> 
+      <object-name>pedal.002</object-name>
+      <object-name>pedalL</object-name> 
+      <object-name>pedalR</object-name>       
+      <object-name>rudderwheel</object-name>      
+      <object-name>seatCP</object-name>      
+      <object-name>seatP</object-name>
+      <object-name>Yoke</object-name>      
+      <object-name>YokeCP</object-name>
+      <condition>
+        <not>
+            <property>sim/rendering/rembrandt/enabled</property>
+        </not>
+      </condition>
+      <emission>
+        <red>0.03</red>
+        <green>0.03</green>
+        <blue>0.03</blue>
+      <factor-prop>sim/multiplay/generic/float[3]</factor-prop>
+      </emission>
+  </animation>
+
+  <animation>
+      <type>material</type>
+      <object-name>panel.002</object-name>
+      <object-name>ThrottleColumn</object-name>
+      <object-name>throttleL</object-name>
+      <object-name>throttleR</object-name>           
+      <object-name>YokeColumn</object-name>      
+      <object-name>cockpit</object-name>
+      <condition>
+        <not>
+            <property>sim/rendering/rembrandt/enabled</property>
+        </not>
+      </condition>
+      <emission>
+        <red>0.08</red>
+        <green>0.08</green>
+        <blue>0.08</blue>
+      <factor-prop>sim/multiplay/generic/float[3]</factor-prop>
+      </emission>
+  </animation>
+
+  <animation>
+      <type>material</type>
+      <object-name>panel.001</object-name>
+      <condition>
+        <not>
+            <property>sim/rendering/rembrandt/enabled</property>
+        </not>
+      </condition>
+      <emission>
+        <red>0.2</red>
+        <green>0.2</green>
+        <blue>0.2</blue>
+      <factor-prop>sim/multiplay/generic/float[3]</factor-prop>
+      </emission>
+  </animation>
+
+  <!-- pedals -->
+  <animation>
+		<type>rotate</type>
+		<object-name>pedalL</object-name>
+		<property>surface-positions/rudder-pos-norm</property>
+		<factor>-8</factor>
+		<center>
+			<x-m>-4.537</x-m>
+			<y-m> 0 </y-m>
+			<z-m> 0.097</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+  <animation>
+		<type>rotate</type>
+		<object-name>pedalR</object-name>
+		<property>surface-positions/rudder-pos-norm</property>
+		<factor>8</factor>
+		<center>
+			<x-m>-4.537</x-m>
+			<y-m> 0 </y-m>
+			<z-m> 0.097</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+  <!-- Yokes -->
+  <animation>
+    <type>select</type>
+    <object-name>Yoke</object-name>
+    <object-name>YokeCP</object-name>
+    <condition>
+      <not>
+        <property>/sim/yokes-visible</property>
+      </not>
+    </condition>
+  </animation>
+
+  <animation>
+   <type>pick</type>
+   <object-name>Yoke</object-name>
+   <object-name>YokeCP</object-name>
+   <object-name>YokeColumn</object-name>
+   <object-name>seatP</object-name>
+   <object-name>seatCP</object-name>
+   <visible>true</visible>
+   <action>
+     <button>0</button>
+     <repeatable>false</repeatable>
+     <binding>
+       <command>property-toggle</command>
+       <property>/sim/yokes-visible</property>
+     </binding>
+   </action>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>YokeColumn</object-name>
+    <object-name>Yoke</object-name>
+    <object-name>YokeCP</object-name>
+    <property>surface-positions/elevator-pos-norm</property>
+    <factor> -6 </factor>
+    <center>
+      <x-m>-3.824 </x-m>
+      <y-m> 0.031 </y-m>
+      <z-m> 0.0 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x> 
+      <y> 1 </y> 
+      <z> 0 </z> 
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>Yoke</object-name>
+    <property>surface-positions/left-aileron-pos-norm</property>
+    <factor> -100 </factor>
+    <center>
+      <x-m> 0.000 </x-m>
+      <y-m>-0.613 </y-m>
+      <z-m> 0.887 </z-m>
+    </center>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>YokeCP</object-name>
+    <property>surface-positions/left-aileron-pos-norm</property>
+    <factor> -100 </factor>
+    <center>
+      <x-m> 0.000 </x-m>
+      <y-m> 0.605 </y-m>
+      <z-m> 0.887 </z-m>
+    </center>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <!-- throttle -->
+  <animation>
+    <type>rotate</type>
+    <object-name>throttleL</object-name>
+    <property>/controls/engines/engine[0]/throttle</property>
+    <factor> -60 </factor>
+    <center>
+      <x-m>-4.009 </x-m>
+      <y-m> 0 </y-m>
+      <z-m> 0.835 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1</y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>throttleL</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+      <binding>
+          <condition>
+              <not>
+                  <property>devices/status/keyboard/shift</property>
+              </not>
+          </condition>
+          <command>property-adjust</command>
+          <property>/controls/engines/engine[0]/throttle</property>
+          <step>0.01</step>
+          <min>0</min>
+          <max>1</max>
+      </binding>
+      <binding>
+          <condition>
+              <property>devices/status/keyboard/shift</property>
+          </condition>
+          <command>property-adjust</command>
+          <property>/controls/engines/engine[0]/throttle</property>
+          <step>0.1</step>
+          <min>0</min>
+          <max>1</max>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>throttleL</object-name>
+    <action>
+      <button>1</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+      <binding>
+          <condition>
+              <not>
+                  <property>devices/status/keyboard/shift</property>
+              </not>
+          </condition>
+          <command>property-adjust</command>
+          <property>/controls/engines/engine[0]/throttle</property>
+          <step>-0.01</step>
+          <min>0</min>
+          <max>1</max>
+      </binding>
+      <binding>
+          <condition>
+              <property>devices/status/keyboard/shift</property>
+          </condition>
+          <command>property-adjust</command>
+          <property>/controls/engines/engine[0]/throttle</property>
+          <step>-0.1</step>
+          <min>0</min>
+          <max>1</max>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>throttleL</object-name>
+    <action>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+      <binding>
+          <condition>
+              <not>
+                  <property>devices/status/keyboard/shift</property>
+              </not>
+          </condition>
+          <command>property-adjust</command>
+          <property>/controls/engines/engine[0]/throttle</property>
+          <step>0.01</step>
+          <min>0</min>
+          <max>1</max>
+      </binding>
+      <binding>
+          <condition>
+              <property>devices/status/keyboard/shift</property>
+          </condition>
+          <command>property-adjust</command>
+          <property>/controls/engines/engine[0]/throttle</property>
+          <step>0.1</step>
+          <min>0</min>
+          <max>1</max>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>throttleL</object-name>
+    <action>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+      <binding>
+          <condition>
+              <not>
+                  <property>devices/status/keyboard/shift</property>
+              </not>
+          </condition>
+          <command>property-adjust</command>
+          <property>/controls/engines/engine[0]/throttle</property>
+          <step>-0.01</step>
+          <min>0</min>
+          <max>1</max>
+      </binding>
+      <binding>
+          <condition>
+              <property>devices/status/keyboard/shift</property>
+          </condition>
+          <command>property-adjust</command>
+          <property>/controls/engines/engine[0]/throttle</property>
+          <step>-0.1</step>
+          <min>0</min>
+          <max>1</max>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>throttleR</object-name>
+    <property>/controls/engines/engine[1]/throttle</property>
+    <factor> -60 </factor>
+    <center>
+      <x-m>-4.009 </x-m>
+      <y-m> 0 </y-m>
+      <z-m> 0.835 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 1</y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>throttleR</object-name>
+    <action>
+      <button>0</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+      <binding>
+          <condition>
+              <not>
+                  <property>devices/status/keyboard/shift</property>
+              </not>
+          </condition>
+          <command>property-adjust</command>
+          <property>/controls/engines/engine[1]/throttle</property>
+          <step>0.01</step>
+          <min>0</min>
+          <max>1</max>
+      </binding>
+      <binding>
+          <condition>
+              <property>devices/status/keyboard/shift</property>
+          </condition>
+          <command>property-adjust</command>
+          <property>/controls/engines/engine[1]/throttle</property>
+          <step>0.1</step>
+          <min>0</min>
+          <max>1</max>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>throttleR</object-name>
+    <action>
+      <button>1</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+      <binding>
+          <condition>
+              <not>
+                  <property>devices/status/keyboard/shift</property>
+              </not>
+          </condition>
+          <command>property-adjust</command>
+          <property>/controls/engines/engine[1]/throttle</property>
+          <step>-0.01</step>
+          <min>0</min>
+          <max>1</max>
+      </binding>
+      <binding>
+          <condition>
+              <property>devices/status/keyboard/shift</property>
+          </condition>
+          <command>property-adjust</command>
+          <property>/controls/engines/engine[1]/throttle</property>
+          <step>-0.1</step>
+          <min>0</min>
+          <max>1</max>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>throttleR</object-name>
+    <action>
+      <button>3</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+      <binding>
+          <condition>
+              <not>
+                  <property>devices/status/keyboard/shift</property>
+              </not>
+          </condition>
+          <command>property-adjust</command>
+          <property>/controls/engines/engine[1]/throttle</property>
+          <step>0.01</step>
+          <min>0</min>
+          <max>1</max>
+      </binding>
+      <binding>
+          <condition>
+              <property>devices/status/keyboard/shift</property>
+          </condition>
+          <command>property-adjust</command>
+          <property>/controls/engines/engine[1]/throttle</property>
+          <step>0.1</step>
+          <min>0</min>
+          <max>1</max>
+      </binding>
+    </action>
+  </animation>
+
+  <animation>
+    <type>pick</type>
+    <object-name>throttleR</object-name>
+    <action>
+      <button>4</button>
+      <repeatable>true</repeatable>
+      <interval-sec>0.2</interval-sec>
+      <binding>
+          <condition>
+              <not>
+                  <property>devices/status/keyboard/shift</property>
+              </not>
+          </condition>
+          <command>property-adjust</command>
+          <property>/controls/engines/engine[1]/throttle</property>
+          <step>-0.01</step>
+          <min>0</min>
+          <max>1</max>
+      </binding>
+      <binding>
+          <condition>
+              <property>devices/status/keyboard/shift</property>
+          </condition>
+          <command>property-adjust</command>
+          <property>/controls/engines/engine[1]/throttle</property>
+          <step>-0.1</step>
+          <min>0</min>
+          <max>1</max>
+      </binding>
+    </action>
+  </animation>
+
+  <!-- TRIMM WHEELS -->
+  
+    <!--  animate the trim-wheels -->
+    <animation>
+      <type>rotate</type>
+      <object-name>eltrimwheel</object-name>
+      <property>/controls/flight/elevator-trim</property>
+      <factor>-100</factor>
+      <axis>
+        <x1-m>-3.9661</x1-m>
+        <y1-m>-1.0019</y1-m>
+        <z1-m>0.6368</z1-m>
+        <x2-m>-3.9439</x2-m>
+        <y2-m>-0.9361</y2-m>
+        <z2-m>0.6368</z2-m>
+      </axis>
+    </animation>
+
+    <animation>
+      <type>rotate</type>
+      <object-name>rudderwheel</object-name>
+      <property>/controls/flight/rudder-trim</property>
+      <factor>100</factor>
+      <axis>
+        <x1-m>-3.664</x1-m>
+        <y1-m>-1.0637</y1-m>
+        <z1-m>0.7089</z1-m>
+        <x2-m>-3.6486</x2-m>
+        <y2-m>-0.9427</y2-m>
+        <z2-m>0.7089</z2-m>
+      </axis>
+    </animation>
+
+    <animation>
+      <type>rotate</type>
+      <object-name>ailtrimwheel</object-name>
+      <property>/controls/flight/aileron-trim</property>
+      <factor>100</factor>
+      <axis>
+        <x1-m>-3.9661</x1-m>
+        <y1-m>-1.0019</y1-m>
+        <z1-m>0.6368</z1-m>
+        <x2-m>-3.9439</x2-m>
+        <y2-m>-0.9361</y2-m>
+        <z2-m>0.6368</z2-m>
+      </axis>
+    </animation>
+    <!--  trim-wheel control -->
+    <animation>
+      <type>pick</type>
+      <object-name>eltrimwheel</object-name>
+      <object-name>sight.elev</object-name>
+      <action>
+        <button>0</button>
+        <repeatable>true</repeatable>
+        <interval-sec>0.2</interval-sec>
+         <binding>
+          <command>nasal</command>
+          <script>doj.applyTrimWheels(0, 0)</script>
+         </binding>
+      </action>
+      <action>
+        <button>3</button>
+        <repeatable>true</repeatable>
+        <interval-sec>0.2</interval-sec>
+        <binding>
+          <command>property-adjust</command>
+          <property>/controls/flight/elevator-trim</property>
+          <step>0.005</step>
+          <min>-1</min>
+          <max>1</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+      <action>
+        <button>4</button>
+        <repeatable>true</repeatable>
+        <interval-sec>0.2</interval-sec>
+        <binding>
+          <command>property-adjust</command>
+          <property>/controls/flight/elevator-trim</property>
+          <step>-0.005</step>
+          <min>-1</min>
+          <max>1</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+    </animation>
+
+    <animation>
+      <type>pick</type>
+      <object-name>rudderwheel</object-name>
+      <object-name>sight.rudder</object-name>
+      <action>
+        <button>0</button>
+        <repeatable>true</repeatable>
+        <interval-sec>0.2</interval-sec>
+         <binding>
+          <command>nasal</command>
+          <script>doj.applyTrimWheels(0, 1)</script>
+         </binding>
+      </action>
+      <action>
+        <button>3</button>
+        <repeatable>true</repeatable>
+        <interval-sec>0.2</interval-sec>
+        <binding>
+          <command>property-adjust</command>
+          <property>/controls/flight/rudder-trim</property>
+          <step>-0.005</step>
+          <min>-1</min>
+          <max>1</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+      <action>
+        <button>4</button>
+        <repeatable>true</repeatable>
+        <interval-sec>0.2</interval-sec>
+        <binding>
+          <command>property-adjust</command>
+          <property>/controls/flight/rudder-trim</property>
+          <step>0.005</step>
+          <min>-1</min>
+          <max>1</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+    </animation>
+
+    <animation>
+      <type>pick</type>
+      <object-name>ailtrimwheel</object-name>
+      <object-name>sight.ail</object-name>
+      <action>
+        <button>0</button>
+        <repeatable>true</repeatable>
+        <interval-sec>0.2</interval-sec>
+         <binding>
+          <command>nasal</command>
+          <script>doj.applyTrimWheels(0, 2)</script>
+         </binding>
+      </action>
+      <action>
+        <button>3</button>
+        <repeatable>true</repeatable>
+        <interval-sec>0.2</interval-sec>
+        <binding>
+          <command>property-adjust</command>
+          <property>/controls/flight/aileron-trim</property>
+          <step>-0.005</step>
+          <min>-1</min>
+          <max>1</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+      <action>
+        <button>4</button>
+        <repeatable>true</repeatable>
+        <interval-sec>0.2</interval-sec>
+        <binding>
+          <command>property-adjust</command>
+          <property>/controls/flight/aileron-trim</property>
+          <step>0.005</step>
+          <min>-1</min>
+          <max>1</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+    </animation>
+
+  <!-- ####################### Instrumentation ##########################-->
+
+  <!-- 1. SPEED --> 
+  <model>
+    <path>Aircraft/DO-J-II/Models/Cockpit/Instruments/asi/asi.xml</path>
+    <offsets>
+      <x-m> -4.135 </x-m>
+      <y-m> -0.8 </y-m>
+      <z-m>  0.95 </z-m>
+      <pitch-deg> -8 </pitch-deg>
+    </offsets>
+  </model>
+
+  <!-- 2. VERTICAL SPEED --> 
+  <model>
+    <path>Aircraft/DO-J-II/Models/Cockpit/Instruments/vs/vario.xml</path>
+    <offsets>
+      <x-m> -4.152 </x-m>
+      <y-m> -0.69 </y-m>
+      <z-m>  1.0 </z-m>
+      <pitch-deg> -8 </pitch-deg>
+    </offsets>
+  </model>
+
+  <!-- 3. TURN --> 
+  <model>
+    <path>Aircraft/DO-J-II/Models/Cockpit/Instruments/turn/turn.xml</path>
+    <offsets>
+      <x-m> -4.148 </x-m>
+      <y-m> -0.44 </y-m>
+      <z-m>  1.0 </z-m>
+      <pitch-deg> -8</pitch-deg>
+    </offsets>
+  </model>
+
+  <!-- 4. Kursinstrument Siemens K4 --> 
+  <model>
+    <path>Aircraft/DO-J-II/Models/Cockpit/Instruments/k4/k4.xml</path>
+    <offsets>
+      <x-m> -4.12 </x-m>
+      <y-m> -0.27 </y-m>
+      <z-m>  0.87 </z-m>
+      <pitch-deg> -9 </pitch-deg>
+    </offsets>
+  </model>
+
+  <!-- 5. ALT --> 
+  <model>
+    <path>Aircraft/DO-J-II/Models/Cockpit/Instruments/alt/alt.xml</path>
+    <offsets>
+      <x-m> -4.148 </x-m>
+      <y-m> -0.57 </y-m>
+      <z-m>  1.0 </z-m>
+      <pitch-deg> -8 </pitch-deg>
+    </offsets>
+  </model>
+
+  <!-- 6. AFN --> 
+  <model>
+    <path>Aircraft/DO-J-II/Models/Cockpit/Instruments/afn2/afn2.xml</path>
+    <offsets>
+      <x-m> -4.13 </x-m>
+      <y-m> -0.48 </y-m>
+      <z-m>  0.88 </z-m>
+      <pitch-deg> -8 </pitch-deg>
+    </offsets>
+  </model>
+
+  <!-- 7. Atitude --> 
+  <model>
+    <path>Aircraft/DO-J-II/Models/Cockpit/Instruments/att/att-big.xml</path>
+    <offsets>
+      <x-m> -4.13 </x-m>
+      <y-m> -0.0 </y-m>
+      <z-m>  0.8 </z-m>
+      <pitch-deg> -8 </pitch-deg>
+    </offsets>
+  </model>
+
+  <!-- 8. Master Switch --> 
+  <model>
+    <path>Aircraft/DO-J-II/Models/Cockpit/Instruments/master/master.xml</path>
+    <offsets>
+      <x-m> -4.16 </x-m>
+      <y-m>  0.0 </y-m>
+      <z-m>  1.08 </z-m>
+      <pitch-deg> -8 </pitch-deg>
+    </offsets>
+  </model>
+
+  <!-- 9. Flightrallye watch -->
+  <model>
+    <path>Aircraft/DO-J-II/Models/Cockpit/Instruments/frw/frw.xml</path>
+    <offsets>
+      <x-m> -4.027 </x-m>
+      <y-m>  0.002 </y-m>
+      <z-m>  1.45 </z-m>
+    </offsets>
+  </model>
+
+  <!-- 10. Pitch glas tube -->
+  <model>
+    <path>Aircraft/DO-J-II/Models/Cockpit/Instruments/aft-ger/aft-ger.xml</path>
+    <offsets>
+      <x-m> -4.13 </x-m>
+      <y-m> -0.374 </y-m>
+      <z-m>  0.97 </z-m>
+      <pitch-deg> -9 </pitch-deg>
+    </offsets>
+  </model>
+
+  <!-- 11. Message Board from the Navigator --> 
+  <model>
+    <path>Aircraft/DO-J-II/Models/Cockpit/Instruments/msboard/msgboard.xml</path>
+    <offsets>
+      <x-m> -4.09 </x-m>
+      <y-m> -0.105 </y-m>
+      <z-m>  0.83 </z-m>
+      <pitch-deg> -10 </pitch-deg>
+    </offsets>
+  </model>
+
+  <!-- boje -->
+  <model>
+    <name>Boje-inside</name>
+    <path>Aircraft/DO-J-II/Models/More/bojeInside.xml</path>
+    <offsets>
+      <x-m> -4.15</x-m>
+      <y-m> 0.2 </y-m>
+      <z-m> 0.05</z-m>
+    </offsets>
+  </model> 
+
+  <animation>
+  <type>select</type>
+  <object-name>Boje-inside</object-name>
+    <condition>
+      <not>
+        <property>sim/multiplay/generic/float[16]</property>
+        <value>1</value>
+      </not>
+    </condition>
+  </animation>
+</PropertyList>
