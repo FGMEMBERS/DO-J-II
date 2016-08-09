@@ -3,10 +3,10 @@
 ##   Dornier DO J II - f - Bos (Wal)
 ##   by Marc Kraus :: Lake of Constance Hangar
 ##
-##   Copyright (C) 2012 - 2014  Marc Kraus  (info(at)marc-kraus.de)
+##   Copyright (C) 2012 - 2016  Marc Kraus  (info(at)marc-kraus.de)
 ##
 ###############################################################################
-var debug_ca   = 0;  # the heaving crane action
+var debug_ca   = 1;  # the heaving crane action
 var debug_cc   = 0;  # is_cam_carrier
 var debug_sc   = 0;  # show_crane_state
 var debug_hp   = 0;
@@ -171,6 +171,9 @@ setlistener("/gear/launchbar/state", func(catEngaged) {
         setprop("/controls/special/pos-stan", 3);
     }else{
         setprop("/controls/special/shadow", 1);
+        if(westfalen_index != nil and westfalen_index >= 0) setprop("/ai/models/carrier["~westfalen_index~"]/surface-positions/cat-heave", 0);
+        if(westfalen_index != nil and westfalen_index >= 0) setprop("/ai/models/carrier["~westfalen_index~"]/surface-positions/crane-heave", 0);
+        if(schwabenland_index != nil and schwabenland_index >= 0) setprop("/ai/models/carrier["~schwabenland_index~"]/surface-positions/crane-heave", 0);
         #  for multiplayer views #####################
         interpolate("/controls/special/catapult-carrier-crane/multi-stand", 0.0, 8);
         setprop("/controls/special/pos-stan", 1);
@@ -680,7 +683,7 @@ var crane_action = func() {
 
         if (real_heave_pos >= schw_catapult_alt - 0.5) {
           step_by_step = 4;
-          interpolate("/ai/models/carrier["~schwabenland_index~"]/surface-positions/crane-heave", schw_catapult_alt, 0);
+          interpolate("/ai/models/carrier["~schwabenland_index~"]/surface-positions/crane-heave", schw_catapult_alt - 0.45, 0);
           interpolate("/controls/special/catapult-carrier-crane/multi-stand", -0.07, 0);
           screen.log.write("Turn the crane with your yoke now!", 1.0, 0.7, 0.0);
         }
