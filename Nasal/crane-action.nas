@@ -6,7 +6,7 @@
 ##   Copyright (C) 2012 - 2016  Marc Kraus  (info(at)marc-kraus.de)
 ##
 ###############################################################################
-var debug_ca   = 1;  # the heaving crane action
+var debug_ca   = 0;  # the heaving crane action
 var debug_cc   = 0;  # is_cam_carrier
 var debug_sc   = 0;  # show_crane_state
 var debug_hp   = 0;
