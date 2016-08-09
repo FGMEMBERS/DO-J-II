@@ -3,7 +3,7 @@
 ##   Dornier DO J II - f - Bos (Wal)
 ##   by Marc Kraus :: Lake of Constance Hangar
 ##
-##   Copyright (C) 2012 - 2014  Marc Kraus  (info(at)marc-kraus.de)
+##   Copyright (C) 2012 - 2016  Marc Kraus  (info(at)marc-kraus.de)
 ##
 ###############################################################################
 var debug_sc = 0;
@@ -33,6 +33,7 @@ var show_crane_state = func() {
 
     if(debug_sc){
       print ("schwabenland_index is: "~schwabenland_index);
+      print ("westfalen_index is: "~westfalen_index);
       print ("is_engaged is: "~is_engaged);
       print ("is_heaving is: "~is_heaving);
     }
@@ -90,6 +91,59 @@ var show_crane_state = func() {
 
     } # end schwabenland_index
 
+    if (westfalen_index >= 0) {
+
+      # if there is no other aircraft
+      if (is_heaving < 0 and is_engaged < 0){
+          setprop("/ai/models/carrier["~westfalen_index~"]/surface-positions/crane-turn",
+                  getprop("/controls/special/catapult-carrier-crane/multi-turn") or 0);
+          setprop("/ai/models/carrier["~westfalen_index~"]/surface-positions/crane-stand",
+                  getprop("/controls/special/catapult-carrier-crane/multi-stand") or 0);
+          setprop("/ai/models/carrier["~westfalen_index~"]/surface-positions/crane-hook-locked",
+                  getprop("/controls/special/catapult-carrier-crane/hook-locked") or 0);
+          # cargo
+          setprop("/ai/models/carrier["~westfalen_index~"]/controls/cargo",
+                  getprop("/controls/special/catapult-carrier-crane/cargo-westalen") or 0);
+          # nobody can hook the cat, if somebody is on the crane
+          setprop("/controls/special/catapult-carrier-crane/crane-is-free", 1);
+          # if nobody (we also) is on the hook or catapult the crane stand up.
+          var gls = getprop("/gear/launchbar/state") or "";
+          var scn = getprop("/controls/special/catapult-carrier-crane/search-carrier") or 0;
+          var mst = getprop("/controls/special/catapult-carrier-crane/multi-stand") or 0;
+          if ( mst < 1.0 and !scn and gls == "Disengaged"){
+             interpolate("/controls/special/catapult-carrier-crane/multi-stand", 0.0, 6);
+             interpolate("/controls/special/catapult-carrier-crane/multi-turn", 0.0, 6);
+          }
+
+      }else{
+          var mp_index = -1;
+          if (is_heaving >= 0 ) mp_index = is_heaving;
+          if (is_engaged >= 0 ) mp_index = is_engaged;
+          # set on the carrier
+          setprop("/ai/models/carrier["~westfalen_index~"]/surface-positions/crane-turn",
+                  getprop("/ai/models/multiplayer["~mp_index~"]/sim/multiplay/generic/float[12]") or 0);
+          setprop("/ai/models/carrier["~westfalen_index~"]/surface-positions/crane-stand",
+                  getprop("/ai/models/multiplayer["~mp_index~"]/sim/multiplay/generic/float[13]") or 0);
+          setprop("/ai/models/carrier["~westfalen_index~"]/surface-positions/crane-hook-locked",
+                  getprop("/ai/models/multiplayer["~mp_index~"]/sim/multiplay/generic/int[19]") or 0);
+          # cargo
+          setprop("/ai/models/carrier["~westfalen_index~"]/controls/cargo",
+                  getprop("/ai/models/multiplayer["~mp_index~"]/sim/multiplay/generic/float[15]") or 0);
+          # and the same on your local aircraft
+          setprop("/controls/special/catapult-carrier-crane/multi-turn",
+                  getprop("/ai/models/multiplayer["~mp_index~"]/sim/multiplay/generic/float[12]") or 0);
+          setprop("/controls/special/catapult-carrier-crane/multi-stand",
+                  getprop("/ai/models/multiplayer["~mp_index~"]/sim/multiplay/generic/float[13]") or 0);
+
+          setprop("/controls/special/catapult-carrier-crane/cargo-westfalen",
+                  getprop("/ai/models/multiplayer["~mp_index~"]/sim/multiplay/generic/float[15]") or 0);
+          # nobody can hook the cat, if somebody is on the crane
+          setprop("/controls/special/catapult-carrier-crane/crane-is-free", 0);
+      }
+
+
+    } # end westfalen_index
+
     settimer(show_crane_state, 0);
 }
 
@@ -110,14 +164,10 @@ var is_cam_carrier = func {
         if (shipsName == "Schwabenland"){
           if (debug_cc) print(shipsName~" gefunden");
           schwabenland_index = i;
-          return;
-        }elsif (shipsName == "Westfalen"){
+        }
+        if (shipsName == "Westfalen"){
           if (debug_cc) print(shipsName~" gefunden");
           westfalen_index = i;
-          return;
-        }else{
-          if (debug_cc) print(shipsName~" gefunden, suche weiter");
-          schwabenland_index = -1;
         }
     }
 }
