@@ -3,7 +3,7 @@
 ##   Dornier DO J II - f - Bos (Wal)
 ##   by Marc Kraus :: Lake of Constance Hangar
 ##
-##   Copyright (C) 2012 - 2014  Marc Kraus  (info(at)marc-kraus.de)
+##   Copyright (C) 2012 - 2016  Marc Kraus  (info(at)marc-kraus.de)
 ##
 ###############################################################################
 # =============================================================================
@@ -494,7 +494,8 @@ var fromWestCraneToCat = func{
     setMyHeading(69.9);
     interpolate("/ai/models/carrier["~westfalen_index~"]/surface-positions/cat-heave", 1.70, 4);
     interpolate("/controls/special/catapult-carrier-crane/cat-elevator-westfalen", 1.70, 4); # only for the sound
-    if(getprop("/ai/models/carrier["~westfalen_index~"]/surface-positions/cat-heave") > 1.65){
+    var chn = getprop("/ai/models/carrier["~westfalen_index~"]/surface-positions/cat-heave") or 0;
+    if( chn > 1.65){
       fwctw_step = 7;
     }
     #fwctw_step = 7;

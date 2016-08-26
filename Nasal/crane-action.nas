@@ -3,7 +3,7 @@
 ##   Dornier DO J II - f - Bos (Wal)
 ##   by Marc Kraus :: Lake of Constance Hangar
 ##
-##   Copyright (C) 2012 - 2014  Marc Kraus  (info(at)marc-kraus.de)
+##   Copyright (C) 2012 - 2016  Marc Kraus  (info(at)marc-kraus.de)
 ##
 ###############################################################################
 var debug_ca   = 0;  # the heaving crane action
@@ -48,7 +48,7 @@ var schw_craneLat = 13.46004;
 var schw_crane_pos = geo.Coord.new();
 schw_crane_pos.set_latlon( schw_craneLat, schw_craneLon);
 
-var schw_catapult_alt   = 11.2;
+var schw_catapult_alt   = 11.6;
 var catAltSchwabenland  = 37.58;
 var catLonSchwabenland  = -16.5697346; # stop position on pushback action on the cat after heaving
 var catLatSchwabenland  = 13.45989826; # stop position on pushback action on the cat after heaving
@@ -171,6 +171,9 @@ setlistener("/gear/launchbar/state", func(catEngaged) {
         setprop("/controls/special/pos-stan", 3);
     }else{
         setprop("/controls/special/shadow", 1);
+        if(westfalen_index != nil and westfalen_index >= 0) setprop("/ai/models/carrier["~westfalen_index~"]/surface-positions/cat-heave", 0);
+        if(westfalen_index != nil and westfalen_index >= 0) setprop("/ai/models/carrier["~westfalen_index~"]/surface-positions/crane-heave", 0);
+        if(schwabenland_index != nil and schwabenland_index >= 0) setprop("/ai/models/carrier["~schwabenland_index~"]/surface-positions/crane-heave", 0);
         #  for multiplayer views #####################
         interpolate("/controls/special/catapult-carrier-crane/multi-stand", 0.0, 8);
         setprop("/controls/special/pos-stan", 1);
@@ -313,11 +316,6 @@ var show_crane_state = func() {
                   getprop("/controls/special/catapult-carrier-crane/multi-stand") or 0);
           setprop("/ai/models/carrier["~schwabenland_index~"]/surface-positions/crane-hook-locked",
                   getprop("/controls/special/catapult-carrier-crane/hook-locked") or 0);
-		
-		  if(getprop("/ai/models/carrier["~schwabenland_index~"]/surface-positions/crane-heave") == nil or
-		     getprop("/ai/models/carrier["~schwabenland_index~"]/surface-positions/crane-heave") == ""){
-			 setprop("/ai/models/carrier["~schwabenland_index~"]/surface-positions/crane-heave", 0);}
-		
           # cargo
           setprop("/ai/models/carrier["~schwabenland_index~"]/controls/cargo",
                   getprop("/controls/special/catapult-carrier-crane/cargo-schwabenland") or 0);
@@ -372,15 +370,6 @@ var show_crane_state = func() {
                   getprop("/controls/special/catapult-carrier-crane/multi-stand") or 0);
           setprop("/ai/models/carrier["~westfalen_index~"]/surface-positions/crane-hook-locked",
                   getprop("/controls/special/catapult-carrier-crane/hook-locked") or 0);
-
-		  if(getprop("/ai/models/carrier["~westfalen_index~"]/surface-positions/crane-heave") == nil or
-		     getprop("/ai/models/carrier["~westfalen_index~"]/surface-positions/crane-heave") == ""){
-			 setprop("/ai/models/carrier["~westfalen_index~"]/surface-positions/crane-heave", 0);}
-			 
-		  if(getprop("/ai/models/carrier["~westfalen_index~"]/surface-positions/cat-heave") == nil or
-		     getprop("/ai/models/carrier["~westfalen_index~"]/surface-positions/cat-heave") == ""){
-			 setprop("/ai/models/carrier["~westfalen_index~"]/surface-positions/cat-heave", 0);}
-			 
           # nobody can hook the cat, if somebody is on the crane
           setprop("/controls/special/catapult-carrier-crane/crane-is-free", 1);
           # if nobody (we also) is on the hook or catapult the crane stand up.
@@ -694,7 +683,7 @@ var crane_action = func() {
 
         if (real_heave_pos >= schw_catapult_alt - 0.5) {
           step_by_step = 4;
-          interpolate("/ai/models/carrier["~schwabenland_index~"]/surface-positions/crane-heave", schw_catapult_alt, 0);
+          interpolate("/ai/models/carrier["~schwabenland_index~"]/surface-positions/crane-heave", schw_catapult_alt - 0.45, 0);
           interpolate("/controls/special/catapult-carrier-crane/multi-stand", -0.07, 0);
           screen.log.write("Turn the crane with your yoke now!", 1.0, 0.7, 0.0);
         }

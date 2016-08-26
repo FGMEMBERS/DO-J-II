@@ -13,8 +13,8 @@
 
   <sim>
     <author>Marc Kraus :: Lake of Constance Hangar</author>
-    <aircraft-version>1.1.6</aircraft-version>
-    <status>1.1.6</status>
+    <aircraft-version>1.1.5</aircraft-version>
+    <status>1.1.5</status>
     <flight-model>yasim</flight-model>
     <aero>DO-J-II-yasim</aero>
 
@@ -444,30 +444,6 @@
           <script>doj.changeView(9);</script>
         </binding>
       </key>
-	  <key n="263">
-	  	<name>F7</name>
-	  	<desc>Show map</desc>
-	  	<binding>
-	  	<command>dialog-show</command>
-	  	<dialog-name>map</dialog-name>
-	  	</binding>
-	  </key>
-	  <key n="264">
-	  	<name>F8</name>
-	  	<desc>Show map</desc>
-	  	<binding>
-	  	<command>dialog-show</command>
-	  	<dialog-name>route-manager</dialog-name>
-	  	</binding>
-	  </key>
-	  <key n="265">
-	      <name>F9</name>
-	      <desc>Pop up Fuel and Weight dialog</desc>
-	      <binding>
-	          <command>nasal</command>
-	          <script>gui.showWeightDialog()</script>
-	      </binding>
-	  </key>
       <key n="62">
         <name> Shift + > </name>
         <desc>Pilot-stand-up</desc>
